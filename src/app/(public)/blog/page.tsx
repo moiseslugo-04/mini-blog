@@ -1,0 +1,31 @@
+import { PostCard } from '@components/posts/PostCard'
+import { getPosts } from '@lib/posts/actions'
+import { PostSchema } from '@/lib/schemas/posts'
+
+export default async function BlogPage() {
+  const posts = await getPosts()
+  return (
+    <section className='w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-10 space-y-10'>
+      {/* Header */}
+      <div className='flex flex-col  sm:items-center sm:justify-between gap-4 text-center sm:text-left'>
+        <h1 className='text-3xl sm:text-4xl font-bold text-primary'>
+          Latest Posts
+        </h1>
+        <p className='text-muted-foreground text-sm sm:text-base'>
+          Discover my latest articles and experiments in frontend development.
+        </p>
+      </div>
+      {posts.length > 0 ? (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 '>
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post as PostSchema} />
+          ))}
+        </div>
+      ) : (
+        <p className='text-sm text-muted-foreground text-center py-16'>
+          No posts were found.
+        </p>
+      )}
+    </section>
+  )
+}
