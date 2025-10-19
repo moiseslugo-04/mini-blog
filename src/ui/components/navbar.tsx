@@ -26,7 +26,7 @@ export function Navbar() {
     <nav className='border-b border-border bg-card/50 backdrop-blur-sm'>
       <div className='container mx-auto flex items-center justify-between py-4 px-4'>
         {/* Logo */}
-        <h1 className='text-lg font-bold text-primary'>
+        <h1 className='text-lg font-bold text-primary flex  gap-1 items-center'>
           Moises Blog <Code2 />
         </h1>
 

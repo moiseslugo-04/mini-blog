@@ -1,23 +1,14 @@
-import type { NextAuthConfig } from 'next-auth'
+import { type NextAuthConfig } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import { prisma } from '@lib/prisma'
 import bcrypt from 'bcryptjs'
-import { CredentialsSignin } from 'next-auth'
-
-class InvalidPasswordError extends CredentialsSignin {
-  code = 'Invalid password'
-}
-
-class UserNotFoundError extends CredentialsSignin {
-  code = 'User not found'
-}
-
-class MissingCredentialsError extends CredentialsSignin {
-  code = 'Missing identifier or password'
-}
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
 export const authConfig: NextAuthConfig = {
+  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
+      name: 'Credentials',
+      id: 'credentials',
       credentials: {
         identifier: {
           label: 'Email or Username',
@@ -32,9 +23,8 @@ export const authConfig: NextAuthConfig = {
       },
       async authorize(credentials) {
         const { password, identifier } = credentials
-
         if (!password || !identifier) {
-          throw new MissingCredentialsError()
+          throw new Error('Missing credentials')
         }
 
         const user = await prisma.user.findFirst({
@@ -45,12 +35,12 @@ export const authConfig: NextAuthConfig = {
             ],
           },
         })
-        if (!user) throw new UserNotFoundError()
+        if (!user) throw new Error('User not found')
         const matchPassword = await bcrypt.compare(
           password as string,
           user.password
         )
-        if (!matchPassword) throw new InvalidPasswordError()
+        if (!matchPassword) Error('Invalid password')
 
         return {
           id: user.id,

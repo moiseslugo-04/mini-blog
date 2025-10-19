@@ -9,9 +9,9 @@ export const POST = async (req: NextRequest) => {
     if (oldPublicId) {
       try {
         await cloudinary.uploader.destroy(oldPublicId)
-        console.log(`Imagen anterior eliminada: ${oldPublicId}`)
+        console.log(`Previous image removed: ${oldPublicId}`)
       } catch (error) {
-        console.error('Error eliminando imagen anterior:', error)
+        console.error('Error deleting previous image:', error)
       }
     }
 
@@ -33,7 +33,7 @@ export const POST = async (req: NextRequest) => {
   } catch (error) {
     console.error(error)
     return NextResponse.json(
-      { error: 'Error subiendo imagen' },
+      { error: 'Error uploading image' },
       { status: 500 }
     )
   }

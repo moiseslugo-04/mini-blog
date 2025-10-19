@@ -1,4 +1,5 @@
 'use client'
+
 import { LogIn } from 'lucide-react'
 import {
   Form,
@@ -15,50 +16,13 @@ import {
   CardTitle,
 } from '@components/shadcn/card'
 import { Input } from '@components/shadcn/input'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { loginSchema, LoginSchema } from '@/lib/schemas/auth'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '../shadcn/button'
-import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 import { Spinner } from '@components/shadcn/spinner'
+import { useLogin } from '@/lib/hooks/useLogin'
+
 export function UserForm() {
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
-  const form = useForm<LoginSchema>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      identifier: '',
-      password: '',
-    },
-  })
+  const { loading, form, handleSubmit, error } = useLogin()
 
-  const handleSubmit: SubmitHandler<LoginSchema> = async (data) => {
-    setLoading(true)
-
-    try {
-      const res = await signIn('credentials', {
-        redirect: false,
-        identifier: data.identifier,
-        password: data.password,
-      })
-      console.log(res)
-      if (res.error) throw new Error(res?.code || 'Unknown error')
-      router.push('/dashboard')
-    } catch (error) {
-      if (error && error instanceof Error) {
-        const input =
-          error.message === 'Invalid password' ? 'password' : 'identifier'
-        form.setError(input, {
-          type: 'manual',
-          message: error.message,
-        })
-      }
-    } finally {
-      setLoading(false)
-    }
-  }
   return (
     <Card className='min-w-[300px] min-h-[300px] basis-2xl flex flex-col items-center justify-center mx-auto mt-10 shadow-lg border border-gray-200'>
       {loading ? (
@@ -72,18 +36,28 @@ export function UserForm() {
             <CardTitle className='text-xl font-semibold'>Login Admin</CardTitle>
           </CardHeader>
           <CardContent>
+            {/* Show generic error */}
+            {error && (
+              <div className='mb-4 text-red-600 text-sm font-medium text-center'>
+                {typeof error === 'string'
+                  ? error
+                  : 'Something went wrong. Please try again.'}
+              </div>
+            )}
+
             <Form {...form}>
-              <form
-                className='space-y-6'
-                onSubmit={form.handleSubmit(handleSubmit)}
-              >
+              <form className='space-y-6' onSubmit={handleSubmit}>
                 <FormField
                   name='identifier'
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Username or Email</FormLabel>
                       <FormControl>
-                        <Input placeholder='@username' {...field} />
+                        <Input
+                          placeholder='@username'
+                          {...field}
+                          disabled={loading}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -100,14 +74,30 @@ export function UserForm() {
                           type='password'
                           placeholder='***********'
                           {...field}
+                          disabled={loading}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button className='cursor-pointer'>
-                  Login <LogIn />
+
+                <Button
+                  type='submit'
+                  disabled={loading}
+                  className='cursor-pointer w-full'
+                >
+                  {loading ? (
+                    <>
+                      <Spinner className='mr-2' />
+                      Logging in...
+                    </>
+                  ) : (
+                    <>
+                      <LogIn className='mr-2' />
+                      Login
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>

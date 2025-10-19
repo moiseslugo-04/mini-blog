@@ -1,8 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { PostSchema } from '@/lib/schemas/posts'
+import { PostResponse } from '@/lib/schemas/posts'
 
-export function PostCard({ post }: { post: PostSchema }) {
+export function PostCard({ post }: { post: PostResponse }) {
+  // Format date nicely
+  const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -27,7 +33,7 @@ export function PostCard({ post }: { post: PostSchema }) {
       </div>
 
       {/* Content */}
-      <div className='flex flex-col gap-3 p-5'>
+      <div className='flex flex-col my-auto  gap-3 p-5'>
         {/* Title */}
         <h2
           className='
@@ -39,8 +45,8 @@ export function PostCard({ post }: { post: PostSchema }) {
         </h2>
 
         {/* Author and time information */}
-        <div className='flex items-center justify-between text-sm text-muted-foreground'>
-          <div className='flex items-center gap-2'>
+        <div className='flex flex-col  gap-2 justify-between text-sm text-muted-foreground'>
+          <div className='flex  items-center gap-2'>
             <Image
               alt='User avatar'
               src='/default-user.jpg'
@@ -50,9 +56,12 @@ export function PostCard({ post }: { post: PostSchema }) {
             />
             <span className='font-medium text-foreground'>Moises Lugo</span>
           </div>
-          <span className='text-xs sm:text-sm'>
-            ⏱️ {post.readTime || 5} min read
-          </span>
+          <div className='flex  justify-between items-center px-1'>
+            <span className='text-xs sm:text-sm'>
+              ⏱️ {post.readTime || 5} min read
+            </span>
+            <span className='text-xs'>{formattedDate}</span>
+          </div>
         </div>
       </div>
     </Link>

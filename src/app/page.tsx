@@ -26,10 +26,7 @@ export default function Home() {
         </p>
 
         <Button asChild size='lg' className='mt-4'>
-          <Link
-            href='/posts'
-            className='flex items-center justify-center gap-2'
-          >
+          <Link href='/blog' className='flex items-center justify-center gap-2'>
             View Posts <ArrowRight size={18} />
           </Link>
         </Button>

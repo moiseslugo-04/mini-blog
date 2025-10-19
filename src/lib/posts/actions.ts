@@ -32,8 +32,28 @@ async function createPost(formData: PostSchema) {
   revalidatePath('/blog')
   return post
 }
-
-async function getPosts() {
+async function updatePost({ id, updates }: UpdatePost) {
+  const parsed = postSchema.partial().safeParse(updates)
+  if (!parsed.success)
+    throw new Error(parsed.error.issues[0]?.message ?? 'Invalid data')
+  const post = await prisma.post.findUnique({ where: { id } })
+  if (!post) throw new Error('Post not found')
+  await prisma.post.update({
+    where: { id },
+    data: { ...updates },
+  })
+  revalidatePath('/blog')
+  revalidatePath('/dashboard')
+}
+async function deletePost(id: string) {
+  await prisma.post.delete({ where: { id } })
+  revalidatePath('/blog')
+  revalidatePath('/dashboard')
+}
+async function getPosts(searchTerm?: string) {
+  if (searchTerm) {
+    return filterPostsByTitle(searchTerm)
+  }
   const posts = await prisma.post.findMany({
     orderBy: { createdAt: 'desc' },
   })
@@ -51,11 +71,24 @@ interface UpdatePost {
   id: string
   updates: Partial<PostSchema>
 }
-async function updatePost({ id, updates }: UpdatePost) {
-  await prisma.post.update({
-    where: { id },
-    data: { ...updates },
+
+async function filterPostsByTitle(term: string) {
+  const post = await prisma.post.findMany({
+    where: {
+      title: {
+        contains: term,
+        mode: 'insensitive',
+      },
+    },
+    orderBy: { createdAt: 'desc' },
   })
-  revalidatePath('/blog')
+  return post
 }
-export { createPost, getPosts, getPostById, updatePost, getPostBySlug }
+export {
+  createPost,
+  getPosts,
+  getPostById,
+  updatePost,
+  getPostBySlug,
+  deletePost,
+}

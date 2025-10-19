@@ -22,33 +22,33 @@ A modern mini blog built with Next.js 15 (App Router), Server Actions, and Prism
 
 📁 Project Structure
 src/
- ├─ app/
- │   ├─ (auth)/        # Authentication-related routes
- │   ├─ (private)/     # Protected routes (Dashboard, etc.)
- │   ├─ (public)/      # Public pages (Home, Posts, About)
- │   ├─ api/           # Server actions / API handlers
- │   ├─ hooks/         # Custom React hooks
- │   ├─ layout.tsx     # Root layout
- │   └─ page.tsx       # Main homepage
- │
- ├─ lib/
- │   ├─ auth/          # NextAuth configuration
- │   ├─ posts/         # Post logic
- │   ├─ schemas/       # Zod validation schemas
- │   ├─ cloudinary.ts  # Image upload configuration
- │   ├─ prisma.ts      # Prisma client
- │   └─ utils.ts       # Helper functions
- │
- ├─ types/
- │   └─ next-auth.d.ts # Extended session types
- │
- ├─ ui/
- │   ├─ components/    # Reusable Shadcn UI components
- │   ├─ fonts.ts       # Font configuration
- │   ├─ globals.css    # Global styles
- │   └─ middleware.ts  # Route protection
- │
- └─ i18n/              # (Coming soon) Internationalization
+├─ app/
+│ ├─ (auth)/ # Authentication-related routes
+│ ├─ (private)/ # Protected routes (Dashboard, etc.)
+│ ├─ (public)/ # Public pages (Home, Posts, About)
+│ ├─ api/ # Server actions / API handlers
+│ ├─ hooks/ # Custom React hooks
+│ ├─ layout.tsx # Root layout
+│ └─ page.tsx # Main homepage
+│
+├─ lib/
+│ ├─ auth/ # NextAuth configuration
+│ ├─ posts/ # Post logic
+│ ├─ schemas/ # Zod validation schemas
+│ ├─ cloudinary.ts # Image upload configuration
+│ ├─ prisma.ts # Prisma client
+│ └─ utils.ts # Helper functions
+│
+├─ types/
+│ └─ next-auth.d.ts # Extended session types
+│
+├─ ui/
+│ ├─ components/ # Reusable Shadcn UI components
+│ ├─ fonts.ts # Font configuration
+│ ├─ globals.css # Global styles
+│ └─ middleware.ts # Route protection
+│
+└─ i18n/ # (Coming soon) Internationalization
 
 ⚙️ Setup & Installation
 
@@ -57,11 +57,9 @@ Clone the repository
 git clone https://github.com/yourusername/mini-blog.git
 cd mini-blog
 
-
 Install dependencies
 
 pnpm install
-
 
 Environment variables
 Create a .env file and add:
@@ -73,11 +71,9 @@ CLOUDINARY_API_KEY=""
 CLOUDINARY_API_SECRET=""
 CLOUDINARY_CLOUD_NAME=""
 
-
 Run Prisma migrations
 
 npx prisma migrate dev
-
 
 Start development server
 

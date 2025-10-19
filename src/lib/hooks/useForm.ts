@@ -1,28 +1,25 @@
 'use client'
 import {
-  SubmitHandler,
   useForm as useReactHookForm,
   UseFormReturn,
+  UseFormProps,
+  FieldValues,
 } from 'react-hook-form'
 import { z, ZodType } from 'zod'
-interface UseFormOptions<T extends ZodType<any, any>> {
-  schema: ZodType<any>
-  defaultValues: z.infer<T>
+import { zodResolver } from '@hookform/resolvers/zod'
+
+interface UseFormOptions<T extends FieldValues> extends UseFormProps<T> {
+  schema: ZodType<T>
 }
-export function useForm<T extends ZodType<any, any>>({
+
+export function useForm<T extends FieldValues>({
   schema,
-  defaultValues,
-}: UseFormOptions<T>): UseFormReturn<z.infer<T>> {
-  const form = useReactHookForm<z.infer<T>>({
-    resolver: (values) => {
-      try {
-        const parsed = schema.parse(values)
-        return { values: parsed, errors: {} }
-      } catch (err: any) {
-        return { values: {}, errors: err.formErrors?.fieldErrors || {} }
-      }
-    },
-    defaultValues,
+  ...rest
+}: UseFormOptions<T>): UseFormReturn<T> {
+  const methods = useReactHookForm<T>({
+    ...rest,
+    resolver: zodResolver(schema as any),
   })
-  return { ...form }
+
+  return methods
 }
