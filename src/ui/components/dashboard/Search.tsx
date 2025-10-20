@@ -20,7 +20,7 @@ export function Search() {
       params.delete('search')
     }
     replace(`${pathname}?${params.toString()}`)
-  }, [term, pathname, replace, searchParams])
+  }, [debouncedTerm, pathname, replace, searchParams])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTerm(event.currentTarget.value)

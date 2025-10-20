@@ -1,6 +1,6 @@
 import { PostCard } from '@components/posts/PostCard'
 import { getPosts } from '@lib/posts/actions'
-import { PostSchema } from '@/lib/schemas/posts'
+import { PostResponse } from '@/lib/schemas/posts'
 import { cache } from 'react'
 const getPostsCache = cache(async () => getPosts())
 export default async function BlogPage() {
@@ -20,7 +20,7 @@ export default async function BlogPage() {
         {posts.length > 0 ? (
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 '>
             {posts.map((post) => (
-              <PostCard key={post.id} post={post as PostSchema} />
+              <PostCard key={post.id} post={post as PostResponse} />
             ))}
           </div>
         ) : (
@@ -31,6 +31,7 @@ export default async function BlogPage() {
       </section>
     )
   } catch (error) {
+    console.error(error)
     return (
       <section className='text-center py-16'>
         <p className='text-red-500'>

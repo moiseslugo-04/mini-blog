@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createPost, getPostById, updatePost } from '@lib/posts/actions'
+import { createPost, updatePost } from '@lib/posts/actions'
 import { useForm } from '@lib/hooks/useForm'
-import { PostSchema, postSchema, PostWithId } from '@lib/schemas/posts'
+import { PostSchema, postSchema, PostResponse } from '@lib/schemas/posts'
 interface UsePostFormProps {
-  post?: PostWithId
+  post?: PostResponse
 }
 export function usePostForm({ post }: UsePostFormProps) {
   const router = useRouter()

@@ -32,7 +32,7 @@ export function TablePost() {
     startTransition(() => {
       getPostsAction()
     })
-  }, [search])
+  }, [search, getPostsAction])
 
   const handleDeleteClick = (id: string) => {
     setDeleteId(id)

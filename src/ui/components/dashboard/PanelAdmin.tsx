@@ -6,6 +6,8 @@ import {
 } from '@components/shadcn/card'
 import { TablePost } from '@/ui/components/dashboard/TablePost'
 import { Search } from '@components/dashboard/Search'
+import { Suspense } from 'react'
+import { Spinner } from '../shadcn/spinner'
 
 export function PanelAdmin() {
   return (
@@ -18,7 +20,15 @@ export function PanelAdmin() {
         {/* Search input */}
         <Search />
         {/* Table */}
-        <TablePost />
+        <Suspense
+          fallback={
+            <p className='flex gap-2 m-auto'>
+              Loading Posts <Spinner />
+            </p>
+          }
+        >
+          <TablePost />
+        </Suspense>
       </CardContent>
     </Card>
   )

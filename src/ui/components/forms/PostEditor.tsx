@@ -3,11 +3,11 @@ import { Card, CardHeader, CardTitle } from '@components/shadcn/card'
 import { PostForm } from '@/ui/components/forms/PostForm'
 import { Button } from '@/ui/components/shadcn/button'
 import { usePostForm } from '@/lib/hooks/usePostForm'
-import { PostWithId } from '@/lib/schemas/posts'
+import { PostResponse } from '@/lib/schemas/posts'
 import { Spinner } from '../shadcn/spinner'
 
 interface PostEditorProps {
-  post?: PostWithId
+  post?: PostResponse
 }
 
 export default function PostEditor({ post }: PostEditorProps) {

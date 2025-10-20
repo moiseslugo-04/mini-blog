@@ -67,10 +67,7 @@ export function PostForm({ form, OnSubmit, loading, action }: PostFromProps) {
     <CardContent>
       {loading || (imageLoading && <p>Loading...</p>)}
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(OnSubmit as any)}
-          className='space-y-6'
-        >
+        <form onSubmit={form.handleSubmit(OnSubmit)} className='space-y-6'>
           <FormField
             name='title'
             render={({ field }) => (

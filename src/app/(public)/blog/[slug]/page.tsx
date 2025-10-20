@@ -6,10 +6,15 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { getPostBySlug } from '@/lib/posts/actions'
 import { getUserById } from '@/lib/auth/actions'
+import { PostResponse } from '@/lib/schemas/posts'
 
-export default async function PostPage({ params }: { params: Promise<any> }) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const post = (await getPostBySlug(slug)) as PostResponse
   if (!post) return notFound()
   const user = await getUserById(post.authorId)
 
