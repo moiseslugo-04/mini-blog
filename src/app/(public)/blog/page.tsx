@@ -5,7 +5,7 @@ import { cache } from 'react'
 const getPostsCache = cache(async () => getPosts())
 export default async function BlogPage() {
   try {
-    const posts = await getPostsCache()
+    const posts = (await getPostsCache()) as PostResponse[]
     return (
       <section className='w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-10 space-y-10'>
         {/* Header */}
@@ -20,7 +20,7 @@ export default async function BlogPage() {
         {posts.length > 0 ? (
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 '>
             {posts.map((post) => (
-              <PostCard key={post.id} post={post as PostResponse} />
+              <PostCard key={post.id} post={post} />
             ))}
           </div>
         ) : (
