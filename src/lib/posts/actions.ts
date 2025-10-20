@@ -1,5 +1,5 @@
 'use server'
-import { prisma } from '@lib/prisma'
+import prisma from '@lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { PostSchema, postSchema } from '@lib/schemas/posts'
 import { auth } from '@lib/auth/auth'
