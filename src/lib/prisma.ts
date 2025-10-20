@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
 declare global {
-  // @ts-ignore
   var prisma: PrismaClient | undefined
 }
 
@@ -10,7 +9,7 @@ let prisma: PrismaClient
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient()
 } else {
-  // Para development y hot reload
+  // For development with hot reload
   if (!global.prisma) {
     global.prisma = new PrismaClient()
   }
