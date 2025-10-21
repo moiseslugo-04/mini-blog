@@ -1,20 +1,23 @@
-import { getToken } from 'next-auth/jwt'
-import { NextRequest, NextResponse } from 'next/server'
+// middleware.ts
+import { auth } from '@/lib/auth/auth'
+import { NextResponse } from 'next/server'
 
-export async function middleware(req: NextRequest): Promise<NextResponse> {
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET })
-
+export default auth(async function middleware(req) {
   const { pathname } = req.nextUrl
+  const session = await auth()
 
-  if (!token && pathname.startsWith('/dashboard')) {
+  if (!session && pathname.startsWith('/dashboard')) {
     const loginUrl = new URL('/login', req.url)
     return NextResponse.redirect(loginUrl)
   }
 
+  if (session && pathname.startsWith('/login')) {
+    return NextResponse.redirect(new URL('/dashboard', req.url))
+  }
+
   return NextResponse.next()
-}
+})
 
 export const config = {
   matcher: ['/dashboard/:path*'],
-  runtime: 'nodejs',
 }
