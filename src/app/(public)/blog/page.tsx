@@ -6,7 +6,7 @@ export default async function BlogPage() {
   try {
     const posts = await getPostsCache()
     return (
-      <section className=' max-w-3xl  w-full mx-auto px-4 sm:px-6 md:px-8 py-10 space-y-10'>
+      <section className=' max-w-3xl  w-full mx-auto px-4 sm:px-6 md:px-8 py-10 space-y-10 '>
         {/* Header */}
         <div className='flex flex-col  sm:items-center sm:justify-between gap-4 text-center sm:text-left'>
           <h1 className='text-3xl sm:text-4xl font-bold text-primary'>

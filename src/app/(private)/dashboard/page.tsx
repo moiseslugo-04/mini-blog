@@ -17,7 +17,7 @@ export default async function DashboardPage({
         </p>
       }
     >
-      <div className='flex flex-col gap-6 p-4 sm:p-6 max-w-6xl mx-auto w-full'>
+      <div className=' w-full flex flex-col gap-6 p-4 sm:p-6 max-w-6xl mx-auto '>
         {/* Header */}
         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3'>
           <h1 className='text-2xl font-semibold'>Dashboard (Admin)</h1>
