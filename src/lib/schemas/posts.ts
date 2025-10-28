@@ -1,18 +1,19 @@
 import { z } from 'zod'
 
 export const postSchema = z.object({
-  title: z.string().min(1, 'El título es obligatorio'),
-  slug: z.string().min(1, 'El slug es obligatorio'),
-  content: z.string().min(1, 'El contenido no puede estar vacío'),
-  imageUrl: z.string().url('Debe ser una URL válida'),
-  category: z.string().min(1, 'La categoría es obligatoria'),
-  published: z.boolean().default(true).optional(),
-  readTime: z.number().min(1, 'Debe ser al menos 1 minuto'),
+  title: z.string().min(1, 'Title is required'),
+  content: z.string().min(1, 'Content cannot be empty'),
+  imageUrl: z.url('Must be a valid URL'),
+  category: z.string().min(1, 'The category is mandatory'),
+  published: z.coerce.boolean().default(true).optional(),
+  readTime: z.coerce.number().min(1).max(60),
 })
+
 export type PostSchema = z.infer<typeof postSchema>
 export interface PostResponse extends PostSchema {
   id: string
   authorId: string
   createdAt: Date
   updatedAt: Date
+  slug: string
 }

@@ -1,17 +1,24 @@
 'use client'
-import { Card, CardHeader, CardTitle } from '@components/shadcn/card'
-import { PostForm } from '@/ui/components/forms/PostForm'
+import { Card, CardHeader, CardTitle } from '@/ui/components/shadcn/card'
 import { Button } from '@/ui/components/shadcn/button'
-import { usePostForm } from '@/lib/hooks/usePostForm'
+import { Spinner } from '@/ui/components/shadcn/spinner'
+import { PostForm } from '@/ui/components/forms/PostForm'
+import { useUpdatePost } from '@lib/hooks/useUpdatePost'
 import { PostResponse } from '@/lib/schemas/posts'
-import { Spinner } from '../shadcn/spinner'
 
-interface PostEditorProps {
-  post?: PostResponse
+interface EditPostProps {
+  post: PostResponse
 }
-
-export default function PostEditor({ post }: PostEditorProps) {
-  const { form, loading, handleSubmit, handleCancel } = usePostForm({ post })
+export function EditPost({ post }: EditPostProps) {
+  const { form, handleSubmit, handleCancel, loading } = useUpdatePost({ post })
+  if (!post) {
+    return (
+      <div className='p-4 bg-red-100 border border-red-400 text-red-700'>
+        <h2>Error: Post data not available</h2>
+        <p>Please check the server logs for more information.</p>
+      </div>
+    )
+  }
   return (
     <div className='max-w-5xl mx-auto mt-10 space-y-6 relative'>
       {loading ? (
@@ -21,7 +28,6 @@ export default function PostEditor({ post }: PostEditorProps) {
         </div>
       ) : (
         <Card className='p-6 bg-zinc-950 text-zinc-100 border border-zinc-800 relative'>
-          {/* Cancel Button */}
           <Button
             type='button'
             onClick={handleCancel}
@@ -29,17 +35,13 @@ export default function PostEditor({ post }: PostEditorProps) {
           >
             Cancel
           </Button>
-
           <CardHeader>
-            <CardTitle className='text-xl'>
-              {post?.id ? '📝 Update Post' : '📝 Create new post'}
-            </CardTitle>
-
+            <CardTitle className='text-xl'>📝 Update Post</CardTitle>
             <PostForm
               form={form}
               OnSubmit={handleSubmit}
               loading={loading}
-              action={post?.id ? 'Update Post' : 'Publish Post'}
+              action={'Update Post'}
             />
           </CardHeader>
         </Card>

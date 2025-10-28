@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { PostResponse } from '@/lib/schemas/posts'
-
-export function PostCard({ post }: { post: PostResponse }) {
-  // Format date nicely
-  const formattedDate = new Date(post.createdAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
+import { formattedDate } from '@/lib/utils/formattedDate'
+import { PostWithAuthor } from '@/lib/posts/types'
+export async function PostCard({
+  postWithAuthor,
+}: {
+  postWithAuthor: PostWithAuthor
+}) {
+  const { author, ...post } = postWithAuthor
+  const date = formattedDate(post.createdAt)
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -49,18 +49,20 @@ export function PostCard({ post }: { post: PostResponse }) {
           <div className='flex  items-center gap-2'>
             <Image
               alt='User avatar'
-              src='/default-user.jpg'
+              src={author.avatarUrl ?? '/default-user.jpg'}
               width={28}
               height={28}
               className='rounded-full border border-border'
             />
-            <span className='font-medium text-foreground'>Moises Lugo</span>
+            <span className='font-medium text-foreground'>
+              {author.name ?? 'Unknown'}
+            </span>
           </div>
           <div className='flex  justify-between items-center px-1'>
             <span className='text-xs sm:text-sm'>
               ⏱️ {post.readTime || 5} min read
             </span>
-            <span className='text-xs'>{formattedDate}</span>
+            <span className='text-xs'>{date}</span>
           </div>
         </div>
       </div>

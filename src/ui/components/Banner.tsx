@@ -14,13 +14,10 @@ export function Banner() {
           </span>
         </div>
         <h1 className='text-4xl font-bold tracking-tight'>
-          Aprendizaje continuo, código real.
+          Continuous learning, real code
         </h1>
         <p className='max-w-2xl text-muted-foreground text-sm md:text-base'>
-          <q>
-            “Build, break, learn and share — ese es el camino del
-            desarrollador.”
-          </q>
+          <q>“Build, break, learn and share — that is the developer is way.”</q>
         </p>
       </div>
     </div>

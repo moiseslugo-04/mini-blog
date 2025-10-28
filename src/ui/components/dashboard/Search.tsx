@@ -1,37 +1,27 @@
 'use client'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { Input } from '@components/shadcn/input'
-import { useState, useEffect } from 'react'
-import { useDebounce } from 'use-debounce'
-
+import { useDebouncedCallback } from 'use-debounce'
 export function Search() {
   const { replace } = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
-  const [term, setTerm] = useState(searchParams.get('search') ?? '')
-  const [debouncedTerm] = useDebounce(term, 500)
-  // Effect to navigate when debouncedTerm changes
-  useEffect(() => {
+  const defaultTerm = searchParams.get('query')?.toString()
+  const handleChange = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams)
-    if (debouncedTerm) {
-      params.set('search', debouncedTerm)
+    if (term) {
+      params.set('query', term)
     } else {
-      params.delete('search')
+      params.delete('query')
     }
     replace(`${pathname}?${params.toString()}`)
-  }, [debouncedTerm, pathname, replace, searchParams])
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTerm(event.currentTarget.value)
-  }
-
+  }, 0)
   return (
     <div className='flex items-center justify-between mb-4'>
       <Input
-        value={term}
+        defaultValue={defaultTerm}
         placeholder='Search by title...'
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.value)}
         className='max-w-sm w-full'
       />
     </div>

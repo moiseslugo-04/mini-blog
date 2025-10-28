@@ -51,13 +51,12 @@ export function PostForm({ form, OnSubmit, loading, action }: PostFromProps) {
         body: formData,
       })
       const data = await res.json()
-      console.log(data, 'image')
       form.setValue('imageUrl', data.url, {
         shouldValidate: true,
         shouldDirty: true,
       })
     } catch (error) {
-      console.error('Error uploading image:', error)
+      console.error(error)
     } finally {
       setImageLoading(false)
     }
@@ -78,19 +77,6 @@ export function PostForm({ form, OnSubmit, loading, action }: PostFromProps) {
                     placeholder='Ex: How to use Next.js with Prisma'
                     {...field}
                   />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            name='slug'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Slug</FormLabel>
-                <FormControl>
-                  <Input placeholder='how-to-use-nextjs' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

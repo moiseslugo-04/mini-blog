@@ -25,6 +25,9 @@ export function UserForm() {
 
   return (
     <Card className='min-w-[300px] min-h-[300px] basis-2xl flex flex-col items-center justify-center mx-auto mt-10 shadow-lg border border-gray-200'>
+      <CardHeader>
+        <CardTitle className='text-xl font-semibold'>Login Admin</CardTitle>
+      </CardHeader>
       {loading ? (
         <Button variant='outline' disabled size='sm'>
           <Spinner />
@@ -32,9 +35,6 @@ export function UserForm() {
         </Button>
       ) : (
         <>
-          <CardHeader>
-            <CardTitle className='text-xl font-semibold'>Login Admin</CardTitle>
-          </CardHeader>
           <CardContent>
             {/* Show generic error */}
             {error && (

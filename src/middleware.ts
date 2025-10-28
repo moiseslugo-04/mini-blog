@@ -1,20 +1,20 @@
 // middleware.ts
 import { auth } from '@/lib/auth/auth'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-export default auth(async function middleware(req) {
-  const { pathname } = req.nextUrl
+const protectedRoutes = ['/dashboard']
+export default auth(async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
   const session = await auth()
 
-  if (!session && pathname.startsWith('/dashboard')) {
-    const loginUrl = new URL('/login', req.url)
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname.startsWith(route)
+  )
+  if (isProtectedRoute && !session?.user) {
+    const loginUrl = new URL('/login', request.url)
+    loginUrl.searchParams.set('callbackUrl', pathname)
     return NextResponse.redirect(loginUrl)
   }
-
-  if (session && pathname.startsWith('/login')) {
-    return NextResponse.redirect(new URL('/dashboard', req.url))
-  }
-
   return NextResponse.next()
 })
 

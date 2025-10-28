@@ -4,7 +4,11 @@ import { Plus } from 'lucide-react'
 import { PanelAdmin } from '@/ui/components/dashboard/PanelAdmin'
 import { Suspense } from 'react'
 import { Spinner } from '@/ui/components/shadcn/spinner'
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>
+}) {
   return (
     <Suspense
       fallback={
@@ -24,7 +28,7 @@ export default async function DashboardPage() {
             </Button>
           </Link>
         </div>
-        <PanelAdmin />
+        <PanelAdmin searchParams={searchParams} />
       </div>
     </Suspense>
   )

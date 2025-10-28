@@ -8,8 +8,14 @@ import { TablePost } from '@/ui/components/dashboard/TablePost'
 import { Search } from '@components/dashboard/Search'
 import { Suspense } from 'react'
 import { Spinner } from '../shadcn/spinner'
-
-export function PanelAdmin() {
+import { getAllPosts } from '@/lib/posts/queries'
+export async function PanelAdmin({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string }>
+}) {
+  const { query } = await searchParams
+  const posts = await getAllPosts(query)
   return (
     <Card className='mx-auto overflow-hidden max-w-[800px] w-full'>
       <CardHeader>
@@ -27,7 +33,9 @@ export function PanelAdmin() {
             </p>
           }
         >
-          <TablePost />
+          <Suspense fallback={<p>Loading posts...</p>}>
+            <TablePost posts={posts} />
+          </Suspense>
         </Suspense>
       </CardContent>
     </Card>

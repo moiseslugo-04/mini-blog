@@ -23,6 +23,7 @@ export const authConfig: NextAuthConfig = {
       },
       async authorize(credentials) {
         const { password, identifier } = credentials
+
         if (!password || !identifier) {
           throw new Error('Missing credentials')
         }
@@ -40,7 +41,8 @@ export const authConfig: NextAuthConfig = {
           password as string,
           user.password
         )
-        if (!matchPassword) Error('Invalid password')
+        console.log(matchPassword)
+        if (!matchPassword) throw new Error('Invalid password')
 
         return {
           id: user.id,

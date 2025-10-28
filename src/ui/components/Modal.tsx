@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogDescription,
 } from '@components/shadcn/dialog'
 import { Button } from '@components/shadcn/button'
 export function Modal({
@@ -18,19 +19,26 @@ export function Modal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent aria-describedby='it'>
         <DialogHeader>
           <DialogTitle>Confirm Delete</DialogTitle>
+          <DialogDescription className='text-sm'>
+            This action cannot be undone. It will permanently delete the post.
+          </DialogDescription>
         </DialogHeader>
-        <p>
-          Are you sure you want to delete this post? This action cannot be
-          undone.
-        </p>
-        <DialogFooter className='flex gap-2 justify-end'>
-          <Button variant='outline' onClick={() => onOpenChange()}>
+        <DialogFooter className='flex flex-row   justify-center gap-5'>
+          <Button
+            variant='outline'
+            onClick={() => onOpenChange()}
+            className='size-fit block '
+          >
             Cancel
           </Button>
-          <Button variant='destructive' onClick={actions}>
+          <Button
+            variant='destructive'
+            onClick={actions}
+            className='size-fit  !bg-red-500 block'
+          >
             Delete
           </Button>
         </DialogFooter>
