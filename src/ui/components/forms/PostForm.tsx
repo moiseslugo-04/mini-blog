@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
-
 import { Input } from '@components/shadcn/input'
 import { Textarea } from '@components/shadcn/textarea'
 import { Button } from '@components/shadcn/button'
@@ -13,9 +12,6 @@ import {
   TabsTrigger,
   TabsContent,
 } from '@components/shadcn/tabs'
-import ReactMarkdown from 'react-markdown'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeRaw from 'rehype-raw'
 import 'highlight.js/styles/github-dark.css'
 import {
   Form,
@@ -29,6 +25,7 @@ import { Loader2, Check } from 'lucide-react'
 import matter from 'gray-matter'
 import { PostSchema } from '@/lib/schemas/posts'
 import Image from 'next/image'
+import { PostContent } from '../posts/PostContent'
 interface PostFromProps {
   form: UseFormReturn<PostSchema>
   OnSubmit: (data: PostSchema) => void
@@ -121,9 +118,11 @@ export const authConfig = { /* ... */ }
             {/* Preview tab*/}
             <TabsContent value='preview'>
               <Card className='bg-zinc-900 border-zinc-800 p-4 text-sm prose prose-invert max-w-none'>
-                <ReactMarkdown rehypePlugins={[rehypeHighlight, rehypeRaw]}>
-                  {markdownContent || 'Start typing to see the preview...'}
-                </ReactMarkdown>
+                <PostContent
+                  content={
+                    markdownContent || 'Start typing to see the preview...'
+                  }
+                />
               </Card>
             </TabsContent>
           </Tabs>
