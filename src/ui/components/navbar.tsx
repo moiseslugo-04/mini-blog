@@ -22,7 +22,11 @@ const links = [
 export function Navbar() {
   const pathname = usePathname()
   return (
-    <nav className='absolute left-1/2 -translate-x-1/2 bottom-15 bg-gray-900/60 rounded-md'>
+    <nav
+      className='fixed z-100 left-1/2 -translate-x-1/2 bottom-12 bg-gray-900/60 rounded-md
+    backdrop-blur-md
+    shadow-lg'
+    >
       <div className='container mx-auto flex items-center justify-between py-1 px-4'>
         {/* LINKS (Desktop) */}
         <ul className='hidden sm:flex items-center gap-6 text-sm'>
@@ -39,7 +43,7 @@ export function Navbar() {
                         'transition-colors hover:text-primary',
                         pathname === link.href
                           ? 'text-primary'
-                          : 'text-muted-foreground'
+                          : 'text-gray-400'
                       )}
                     >
                       {link.icon}

@@ -13,58 +13,55 @@ export async function PostCard({
     <Link
       href={`/blog/${post.slug}`}
       className='
-        flex flex-col rounded-xl border border-border bg-card 
-        overflow-hidden shadow-sm hover:shadow-md transition-all duration-300
-        hover:scale-[1.02] group
+        group flex flex-col overflow-hidden rounded-2xl
+        border border-border bg-card
+        transition-all duration-300
+        hover:-translate-y-1 hover:shadow-lg
       '
     >
-      {/* Main image*/}
-      <div className='relative w-full aspect-[16/9] bg-muted'>
+      {/* Image */}
+      <div className='relative aspect-video w-full bg-muted'>
         <Image
           src={post.imageUrl || '/default-product.webp'}
           alt={post.title}
           fill
           className='object-cover transition-transform duration-500 group-hover:scale-105'
           sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-          priority={false}
         />
-        {/* Light Overlay*/}
-        <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent' />
+
+        {/* Subtle gradient overlay */}
+        <div className='absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent' />
       </div>
 
       {/* Content */}
-      <div className='flex flex-col my-auto  gap-3 p-5'>
+      <div className='flex flex-col gap-4 p-5'>
         {/* Title */}
-        <h2
-          className='
-            text-lg sm:text-xl font-semibold text-foreground 
-            group-hover:text-primary transition-colors line-clamp-2
-          '
-        >
+        <h2 className='text-lg font-semibold leading-snug line-clamp-2 transition-colors group-hover:text-primary'>
           {post.title}
         </h2>
 
-        {/* Author and time information */}
-        <div className='flex flex-col  gap-2 justify-between text-sm text-muted-foreground'>
-          <div className='flex  items-center gap-2'>
+        {/* Meta */}
+        <div className='flex items-center justify-between text-xs text-muted-foreground'>
+          {/* Author */}
+          <div className='flex items-center gap-2'>
             <Image
-              alt='User avatar'
               src={author.avatarUrl ?? '/default-user.jpg'}
-              width={28}
-              height={28}
+              alt={author.name ?? 'Author'}
+              width={24}
+              height={24}
               className='rounded-full border border-border'
             />
             <span className='font-medium text-foreground'>
               {author.name ?? 'Unknown'}
             </span>
           </div>
-          <div className='flex  justify-between items-center px-1'>
-            <span className='text-xs sm:text-sm'>
-              ⏱️ {post.readTime || 5} min read
-            </span>
-            <span className='text-xs'>{date}</span>
-          </div>
+
+          {/* Read time */}
+          <span>{post.readTime || 5} min read</span>
         </div>
+
+        {/* Date */}
+        <span className='text-xs text-muted-foreground'>{date}</span>
       </div>
     </Link>
   )

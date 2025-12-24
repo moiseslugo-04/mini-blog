@@ -1,7 +1,9 @@
 export function Footer() {
   return (
-    <footer className='w-full mt-auto border-border text-gray-900/80 py-2 text-center  font-bold text-md'>
-      <p>© {new Date().getFullYear()} Moises Lugo. All rights reserved.</p>
+    <footer className='relative w-full'>
+      <p className='text-xs text-slate-600 dark:text-slate-400 text-center py-2 '>
+        © {new Date().getFullYear()} Moises Lugo
+      </p>
     </footer>
   )
 }

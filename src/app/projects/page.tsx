@@ -1,6 +1,6 @@
 export default function ProjectPage() {
   return (
-    <main className='mt-60 flex items-center justify-center  px-6'>
+    <section className='w-full h-full mt-60 flex items-center justify-center'>
       <div className='max-w-md text-center space-y-6'>
         {/* Icon / Visual */}
         <div className='mx-auto h-16 w-16 rounded-full bg-muted flex items-center justify-center'>
@@ -27,6 +27,6 @@ export default function ProjectPage() {
           Thank you for your patience.
         </p>
       </div>
-    </main>
+    </section>
   )
 }

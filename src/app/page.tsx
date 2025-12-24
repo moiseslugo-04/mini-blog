@@ -1,10 +1,12 @@
 //import { Banner } from '@components/Banner'
+import { WaveBackground } from '@/ui/components/WaveBackground'
 import { Button } from '@components/shadcn/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 export default function Home() {
   return (
-    <section className='full flex-1 flex flex-col items-center justify-center gap-10 text-center py-16 px-4 sm:px-6 md:px-8'>
+    <section className='relative full flex-1 flex flex-col items-center justify-center gap-10 text-center py-16 px-4 sm:px-6 md:px-8'>
+      <WaveBackground />
       <h1 className='text-3xl sm:text-4xl font-bold text-primary'>
         Hi, I’m Moises 👋
       </h1>

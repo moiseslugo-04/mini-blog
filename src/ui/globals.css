@@ -56,7 +56,7 @@
   --popover-foreground: oklch(0.16 0.02 260);
 
   /* Brand / Accent */
-  --primary: oklch(0.55 0.12 265);
+  --primary: oklch(0.55 0.12 265); /* azul profesional */
   --primary-foreground: oklch(0.98 0.002 247);
 
   /* Neutrals */
@@ -96,7 +96,7 @@
   --popover-foreground: oklch(0.98 0.002 247);
 
   /* Brand / Accent */
-  --primary: oklch(0.65 0.14 265);
+  --primary: oklch(0.65 0.14 265); /* azul elegante */
   --primary-foreground: oklch(0.14 0.02 260);
 
   /* Neutrals */
