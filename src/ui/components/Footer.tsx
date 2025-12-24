@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className='border-t border-border py-6 text-center text-sm text-muted-foreground'>
+    <footer className='w-full mt-auto border-border text-gray-900/80 py-2 text-center  font-bold text-md'>
       <p>© {new Date().getFullYear()} Moises Lugo. All rights reserved.</p>
     </footer>
   )

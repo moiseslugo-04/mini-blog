@@ -5,34 +5,36 @@ import { ThemeProvider } from '@components/darkMode/theme-provider'
 import { Navbar } from '@components/navbar'
 import { Footer } from '@components/Footer'
 import { SessionProvider } from 'next-auth/react'
+import { url } from 'inspector'
 export const metadata: Metadata = {
-  title: 'Moises Lugo - Frontend Developer & Mini Blog',
+  title: 'Moises Lugo - Frontend Developer Portfolio',
   description:
-    'Personal blog of Moises Lugo, an aspiring frontend developer sharing projects, tutorials, and insights on Next.js, React, TailwindCSS, and modern web development.',
+    'Personal portfolio of Moises Lugo, a frontend developer showcasing projects and writing about what he learns in web development, including Next.js, React, and TailwindCSS.',
   keywords: [
-    'Frontend',
+    'Moises Lugo',
+    'Frontend Developer',
+    'Portfolio',
     'Next.js',
     'React',
     'TailwindCSS',
-    'Blog',
     'Web Development',
-    'Programming',
-    'Moises Lugo',
+    'JavaScript',
+    'Frontend Portfolio',
   ],
   authors: [{ name: 'Moises Lugo', url: 'https://moisesdev.com' }],
   creator: 'Moises Lugo',
   openGraph: {
-    title: 'Moises Lugo - Frontend Developer & Mini Blog',
+    title: 'Moises Lugo - Frontend Developer Portfolio',
     description:
-      'Personal blog of Moises Lugo, an aspiring frontend developer sharing projects, tutorials, and insights on Next.js, React, TailwindCSS, and modern web development.',
+      'Personal portfolio of Moises Lugo, featuring frontend projects and a blog where he shares what he is learning about modern web development.',
     url: 'https://moisesdev.com',
-    siteName: 'Moises Lugo Blog',
+    siteName: 'Moises Lugo Portfolio',
     images: [
       {
         url: 'https://res.cloudinary.com/dnrlarkyn/image/upload/v1760510816/uploads/j5osl8zjrotgclosmiyx.png',
         width: 1200,
         height: 630,
-        alt: 'Moises Lugo Blog Banner',
+        alt: 'Moises Lugo Portfolio Banner',
       },
     ],
     locale: 'en_US',
@@ -40,13 +42,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Moises Lugo - Frontend Developer & Mini Blog',
+    title: 'Moises Lugo - Frontend Developer Portfolio',
     description:
-      'Personal blog of Moises Lugo, an aspiring frontend developer sharing projects, tutorials, and insights on Next.js, React, TailwindCSS, and modern web development.',
+      'Frontend developer portfolio with projects and blog posts about learning Next.js, React, and modern web development.',
     images: [
       'https://res.cloudinary.com/dnrlarkyn/image/upload/v1760510816/uploads/j5osl8zjrotgclosmiyx.png',
     ],
-    creator: '@moiseslugo', // tu Twitter handle si tienes
+    creator: '@moiseslugo',
   },
 }
 
@@ -63,7 +65,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className='antialiased h-full min-h-screen flex flex-col bg-background text-foreground'
+        className='antialiased h-full min-h-screen flex flex-col bg-background text-foreground relative'
       >
         <ThemeProvider
           attribute='class'
@@ -73,10 +75,13 @@ export default function RootLayout({
         >
           <SessionProvider>
             <Navbar />
-            <main className='flex-1 w-full flex flex-col items-center '>
+            <main
+              className='flex-1 w-full flex flex-col justify-center  items-center bg-cover'
+              style={{ backgroundImage: "url('bg-main.svg')" }}
+            >
               {children}
+              <Footer />
             </main>
-            <Footer />
           </SessionProvider>
         </ThemeProvider>
       </body>
