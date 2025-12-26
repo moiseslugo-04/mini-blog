@@ -11,7 +11,7 @@ A modern, full-stack personal portfolio website built with Next.js, featuring a 
 
 ## ✨ Features
 
-- **Blog Section**: Share your learnings with markdown support, code highlighting, and search functionality.
+- **Blog Section**: Share my learnings with markdown support, code highlighting, and search functionality.
 - **Projects Showcase**: Display real code projects with descriptions, images, and links.
 - **Admin Panel**: Secure authentication for adding, editing, and deleting blog posts and projects.
 - **Responsive Design**: Optimized for all devices with dark/light theme support.
@@ -31,8 +31,8 @@ A modern, full-stack personal portfolio website built with Next.js, featuring a 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/moiseslugo-04/mini-blog.git
-   cd mini-blog
+   git clone https://github.com/moiseslugo-04/portfolio
+   cd portfolio
    ```
 
 2. **Install dependencies:**
