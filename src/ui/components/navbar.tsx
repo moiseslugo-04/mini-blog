@@ -11,12 +11,33 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/ui/components/shadcn/tooltip'
+import Image from 'next/image'
 
 const links = [
-  { href: '/', label: 'Home', icon: <Home size={20} /> },
-  { href: '/blog', label: 'Blog', icon: <LibraryBig size={20} /> },
-  { href: '/projects', label: 'Projects', icon: <Hammer /> },
-  { href: '/dashboard', label: 'Dashboard', icon: <ShieldUser /> },
+  {
+    href: '/',
+    label: 'Home',
+    icon: <Home size={25} />,
+    view: '/home-picture.png',
+  },
+  {
+    href: '/blog',
+    label: 'Blog',
+    icon: <LibraryBig size={25} />,
+    view: '/blog-picture.png',
+  },
+  {
+    href: '/projects',
+    label: 'Projects',
+    icon: <Hammer size={25} />,
+    view: '/development.png',
+  },
+  {
+    href: '/dashboard',
+    label: 'Dashboard',
+    icon: <ShieldUser size={25} />,
+    view: '/development.png',
+  },
 ]
 
 export function Navbar() {
@@ -25,11 +46,12 @@ export function Navbar() {
     <nav
       className='fixed z-100 left-1/2 -translate-x-1/2 bottom-12 bg-gray-900/60 rounded-md
     backdrop-blur-md
-    shadow-lg'
+    shadow-lg
+   '
     >
       <div className='container mx-auto flex items-center justify-between py-1 px-4'>
         {/* LINKS (Desktop) */}
-        <ul className='hidden sm:flex items-center gap-6 text-sm'>
+        <ul className='flex items-center gap-6 text-sm'>
           {links.map((link) => (
             <TooltipProvider key={link.href} delayDuration={100}>
               <li>
@@ -54,9 +76,10 @@ export function Navbar() {
                       side='top'
                       className='p-0 mb-3 relative w-[130] h-auto'
                     >
-                      <img
+                      <Image
+                        width={64}
                         height={20}
-                        src='/development.png'
+                        src={link.view}
                         alt={`${link.label} preview`}
                         className='w-64 rounded-md'
                       />

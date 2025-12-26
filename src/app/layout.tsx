@@ -5,7 +5,6 @@ import { ThemeProvider } from '@components/darkMode/theme-provider'
 import { Navbar } from '@components/navbar'
 import { Footer } from '@components/Footer'
 import { SessionProvider } from 'next-auth/react'
-import { url } from 'inspector'
 export const metadata: Metadata = {
   title: 'Moises Lugo - Frontend Developer Portfolio',
   description:

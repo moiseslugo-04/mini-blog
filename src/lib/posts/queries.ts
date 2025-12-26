@@ -50,3 +50,7 @@ export async function getPostById({ id }: { id: string }) {
   const post = await prisma.post.findUnique({ where: { id } })
   return post
 }
+
+export async function postCount() {
+  return prisma.post.count()
+}
