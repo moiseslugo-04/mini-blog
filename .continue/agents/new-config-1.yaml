@@ -1,0 +1,23 @@
+# This is an example configuration file
+# To learn more, see the full config.yaml reference: https://docs.continue.dev/reference
+
+name: Example Config
+version: 1.0.0
+schema: v1
+
+# Define which models can be used
+# https://docs.continue.dev/customization/models
+models:
+  - name: deepseek r1
+    provider: ollama
+    model: deepseek-r1
+  - name: Qwen 2.5 Coder 7b
+    provider: ollama
+    model: qwen-coder2.5-7b
+    -roles:
+      - autocomplete
+
+# MCP Servers that Continue can access
+# https://docs.continue.dev/customization/mcp-tools
+mcpServers:
+  - uses: next-devtools-mcp
