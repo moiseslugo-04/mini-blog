@@ -1,5 +1,5 @@
 // middleware.ts
-import { auth } from '@/lib/auth/auth'
+import { auth } from '@/lib/features/auth/auth'
 import { NextRequest, NextResponse } from 'next/server'
 
 const protectedRoutes = ['/dashboard']

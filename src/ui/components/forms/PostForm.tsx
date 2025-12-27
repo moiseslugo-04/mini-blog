@@ -23,7 +23,7 @@ import {
 } from '@components/shadcn/form'
 import { Loader2, Check } from 'lucide-react'
 import matter from 'gray-matter'
-import { PostSchema } from '@/lib/schemas/posts'
+import { PostSchema } from '@/lib/features/posts/client/schema/posts'
 import Image from 'next/image'
 import { PostContent } from '../posts/PostContent'
 interface PostFromProps {

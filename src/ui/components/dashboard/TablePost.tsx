@@ -12,10 +12,10 @@ import Link from 'next/link'
 import { Button } from '@components/shadcn/button'
 import { Pencil, Trash2 } from 'lucide-react'
 import { Modal } from '../Modal'
-import { PostResponse } from '@/lib/schemas/posts'
 import { formattedDate } from '@/lib/utils/formattedDate'
 import { useDeletePost } from '@/lib/hooks/useDeletePost'
-export function TablePost({ posts }: { posts: PostResponse[] }) {
+import { PostDTO } from '@/lib/features/posts/types'
+export function TablePost({ posts }: { posts: PostDTO[] }) {
   const { handleConfirmDelete, handleDeleteClick, isDialogOpen, toggleDialog } =
     useDeletePost()
   return (
@@ -35,10 +35,8 @@ export function TablePost({ posts }: { posts: PostResponse[] }) {
               const date = formattedDate(post.createdAt)
               return (
                 <TableRow key={post.id}>
-                  <TableCell className='truncate max-w-[60px]'>
-                    {post.id}
-                  </TableCell>
-                  <TableCell className='font-medium truncate max-w-[250px]'>
+                  <TableCell className='truncate max-w-15'>{post.id}</TableCell>
+                  <TableCell className='font-medium truncate max-w-62.5'>
                     <Link
                       href={`/blog/${post.slug}`}
                       className='hover:underline text-blue-600'

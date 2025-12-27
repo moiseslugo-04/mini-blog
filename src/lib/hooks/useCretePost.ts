@@ -1,9 +1,15 @@
 // hooks/posts/useCreatePost.ts
 import { useActionState, startTransition, useEffect } from 'react'
 import { redirect, useRouter } from 'next/navigation'
-import { createPost, CreatePostState } from '@lib/posts/actions/crete'
+import {
+  createPostAction,
+  CreatePostState,
+} from '@features/posts/server/post.actions'
 import { useForm } from '@lib/hooks/useForm'
-import { PostSchema, postSchema } from '@lib/schemas/posts'
+import {
+  PostSchema,
+  postSchema,
+} from '@/lib/features/posts/client/schema/posts'
 
 const initialState: CreatePostState = {
   success: false,
@@ -12,7 +18,10 @@ const initialState: CreatePostState = {
 }
 
 export function useCreatePost() {
-  const [state, formAction, loading] = useActionState(createPost, initialState)
+  const [state, formAction, loading] = useActionState(
+    createPostAction,
+    initialState
+  )
   const router = useRouter()
   const form = useForm<PostSchema>({
     schema: postSchema,

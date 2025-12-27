@@ -2,7 +2,10 @@
 
 import { useState } from 'react'
 import { useForm } from '@lib/hooks/useForm'
-import { loginSchema, LoginSchema } from '@/lib/schemas/auth'
+import {
+  loginSchema,
+  LoginSchema,
+} from '@/lib/features/auth/client/schema/auth'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 export function useLogin() {

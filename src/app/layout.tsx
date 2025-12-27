@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { geistMono, geistSans } from '@ui/fonts'
+import Head from 'next/head'
 import '@ui/globals.css'
 import { ThemeProvider } from '@components/darkMode/theme-provider'
 import { Navbar } from '@components/navbar'
@@ -62,6 +63,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
+      <Head>
+        <link rel='icon' href='/favicon.png' type='image/x-icon' />
+      </Head>
       <body
         suppressHydrationWarning
         className='antialiased h-full min-h-screen flex flex-col bg-background text-foreground relative'

@@ -1,4 +1,4 @@
-import { postCount } from '@/lib/posts/queries'
+import { postCount } from '@features/posts/server/posts.repository'
 import { stats } from '@/lib/utils/constants'
 
 export async function Header() {

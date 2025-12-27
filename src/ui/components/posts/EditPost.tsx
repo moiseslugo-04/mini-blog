@@ -4,10 +4,9 @@ import { Button } from '@/ui/components/shadcn/button'
 import { Spinner } from '@/ui/components/shadcn/spinner'
 import { PostForm } from '@/ui/components/forms/PostForm'
 import { useUpdatePost } from '@lib/hooks/useUpdatePost'
-import { PostResponse } from '@/lib/schemas/posts'
-
+import { PostDTO } from '@/lib/features/posts/types'
 interface EditPostProps {
-  post: PostResponse
+  post: PostDTO
 }
 export function EditPost({ post }: EditPostProps) {
   const { form, handleSubmit, handleCancel, loading } = useUpdatePost({ post })

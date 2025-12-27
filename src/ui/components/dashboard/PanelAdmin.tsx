@@ -8,7 +8,7 @@ import { TablePost } from '@/ui/components/dashboard/TablePost'
 import { Search } from '@components/dashboard/Search'
 import { Suspense } from 'react'
 import { Spinner } from '../shadcn/spinner'
-import { getAllPosts } from '@/lib/posts/queries'
+import { getAllPosts } from '@features/posts/server/posts.repository'
 export async function PanelAdmin({
   searchParams,
 }: {
@@ -17,7 +17,7 @@ export async function PanelAdmin({
   const { query } = await searchParams
   const posts = await getAllPosts(query)
   return (
-    <Card className='mx-auto overflow-hidden max-w-[800px] w-full'>
+    <Card className='mx-auto overflow-hidden max-w-200 w-full'>
       <CardHeader>
         <CardTitle>My Posts</CardTitle>
       </CardHeader>

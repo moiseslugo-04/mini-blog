@@ -1,10 +1,10 @@
 import { useState, useActionState, startTransition } from 'react'
-import { deletePost } from '@/lib/posts/actions/delete'
+import { deletePostAction } from '@features/posts/server/post.actions'
 
 export function useDeletePost() {
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [state, deletePostAction, isDeleting] = useActionState(deletePost, {
+  const [state, deletePost, isDeleting] = useActionState(deletePostAction, {
     error: null,
     success: false,
   })
@@ -16,7 +16,7 @@ export function useDeletePost() {
   // In your TablePost component
   const handleConfirmDelete = async () => {
     if (!deleteId) return
-    startTransition(() => deletePostAction(deleteId as string))
+    startTransition(() => deletePost(deleteId as string))
 
     setDeleteId(null)
     setIsDialogOpen(false)

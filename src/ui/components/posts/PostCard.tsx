@@ -2,13 +2,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { formattedDate } from '@/lib/utils/formattedDate'
-import { PostWithAuthor } from '@/lib/posts/types'
 import { Calendar, Clock } from 'lucide-react'
+import { PostDTO } from '@/lib/features/posts/types'
 
 export async function PostCard({
   postWithAuthor,
 }: {
-  postWithAuthor: PostWithAuthor
+  postWithAuthor: PostDTO
 }) {
   const { author, ...post } = postWithAuthor
   const date = formattedDate(post.createdAt)

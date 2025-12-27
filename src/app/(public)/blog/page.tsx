@@ -1,6 +1,6 @@
 // components/blog/BlogPage.tsx
 import { PostCard } from '@components/posts/PostCard'
-import { getAllPosts } from '@lib/posts/queries'
+import { getAllPosts } from '@features/posts/server/posts.repository'
 import { Mail } from 'lucide-react'
 import { Header } from '@/ui/components/blog/Header'
 import { SearchBar } from '@/ui/components/blog/Search'

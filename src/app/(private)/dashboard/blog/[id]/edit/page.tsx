@@ -1,15 +1,13 @@
 import { notFound } from 'next/navigation'
-import { getPostById } from '@/lib/posts/queries'
-import { PostResponse } from '@/lib/schemas/posts'
+import { getPostById } from '@features/posts/server/posts.repository'
 import { EditPost } from '@/ui/components/posts/EditPost'
 
-export default async function BlogPostPage({
-  params,
-}: PageProps<'/dashboard/blog/[id]/edit'>) {
+interface BlogPostPageProps {
+  params: Promise<{ id: string }>
+}
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { id } = await params
-  const post = (await getPostById({ id })) as PostResponse
-  if (!post) {
-    notFound()
-  }
+  const post = await getPostById({ id })
+  if (!post) return notFound()
   return <EditPost post={post} />
 }
