@@ -29,6 +29,5 @@ export function useFilter() {
   return {
     handleFilter,
     handleSearch,
-    defaultSearch: searchParams.get('search') ?? '',
   }
 }

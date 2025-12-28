@@ -77,11 +77,11 @@ export function Navbar() {
                       className='p-0 mb-3 relative w-[130] h-auto'
                     >
                       <Image
-                        width={64}
-                        height={20}
                         src={link.view}
+                        width={256}
+                        height={144}
+                        className='rounded-sm object-cover'
                         alt={`${link.label} preview`}
-                        className='w-64 rounded-md'
                       />
                       <span className='absolute font-semibold left-1/2 -translate-x-1/2  bottom-1 px-2 py-1 rounded-sm w-fit bg-amber-600 h-fit text-center my-1'>
                         {link.label}

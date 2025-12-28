@@ -3,8 +3,8 @@
 import { useFilter } from '@/lib/hooks/useFilter'
 import { Search } from 'lucide-react'
 
-export function SearchBar() {
-  const { handleSearch, defaultSearch } = useFilter()
+export function SearchBar({ search }: { search?: string }) {
+  const { handleSearch } = useFilter()
   return (
     //bg-card rounded-2xl border border-border shadow-sm
     <div className='mb-4 p-6 '>
@@ -50,7 +50,7 @@ export function SearchBar() {
           <input
             onChange={(e) => handleSearch(e.target.value)}
             type='search'
-            defaultValue={defaultSearch}
+            defaultValue={search}
             placeholder='Search articles...'
             className='w-full md:w-100 pl-12 pr-4 py-3 rounded-xl border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'
           />

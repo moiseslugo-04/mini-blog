@@ -1,4 +1,3 @@
-// components/posts/PostCard.tsx
 import Link from 'next/link'
 import Image from 'next/image'
 import { formattedDate } from '@/lib/utils/formattedDate'
@@ -54,7 +53,6 @@ export async function PostCard({
           {post.title}
         </h2>
 
-        {/* Excerpt (si tienes un campo excerpt en tu post, añádelo aquí) */}
         {/* {post.excerpt && (
           <p className='text-muted-foreground text-sm line-clamp-3 mb-6'>
             {post.excerpt}
