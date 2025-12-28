@@ -48,7 +48,7 @@ export function SearchBar() {
         <div className='flex justify-center items-center relative w-full md:w-auto'>
           <Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4' />
           <input
-            onChange={handleSearch}
+            onChange={(e) => handleSearch(e.target.value)}
             type='search'
             defaultValue={defaultSearch}
             placeholder='Search articles...'

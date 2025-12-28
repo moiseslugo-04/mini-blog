@@ -1,4 +1,4 @@
-import { useState, useActionState, startTransition } from 'react'
+import { useState, useActionState } from 'react'
 import { deletePostAction } from '@features/posts/server/post.actions'
 
 export function useDeletePost() {
@@ -16,8 +16,7 @@ export function useDeletePost() {
   // In your TablePost component
   const handleConfirmDelete = async () => {
     if (!deleteId) return
-    startTransition(() => deletePost(deleteId as string))
-
+    deletePost(deleteId as string)
     setDeleteId(null)
     setIsDialogOpen(false)
   }

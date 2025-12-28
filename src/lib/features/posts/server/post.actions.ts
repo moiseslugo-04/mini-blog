@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache'
 import { postSchema } from '@/lib/features/posts/client/schema/posts'
 import { PostDTO } from '../types'
 import { createNewPost, deleteUserPost, updateUserPost } from './post.service'
+import { redirect } from 'next/navigation'
 export type CreatePostState = {
   success: boolean
   data: PostDTO | null
@@ -13,12 +14,17 @@ export async function createPostAction(
   _prevState: CreatePostState,
   formData: FormData
 ): Promise<CreatePostState> {
-  const rawData = Object.fromEntries(formData.entries())
-  const parsed = postSchema.parse(rawData)
-  const post = await createNewPost(parsed)
-  revalidatePath('/blog')
-  revalidatePath('/dashboard')
-  return post
+  try {
+    const rawData = Object.fromEntries(formData.entries())
+    const parsed = postSchema.parse(rawData)
+    await createNewPost(parsed)
+    revalidatePath('/blog')
+    revalidatePath('/dashboard')
+    redirect('/dashboard')
+  } catch (error) {
+    console.log(error)
+    throw new Error('Server Internal Error')
+  }
 }
 
 interface DeletePostState {

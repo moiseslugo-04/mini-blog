@@ -4,11 +4,11 @@ import { getAllPosts } from '@features/posts/server/posts.repository'
 import { Mail } from 'lucide-react'
 import { Header } from '@/ui/components/blog/Header'
 import { SearchBar } from '@/ui/components/blog/Search'
-export default async function BlogPage({
-  searchParams,
-}: {
+
+type BLogPageProps = {
   searchParams: Promise<{ search: string }>
-}) {
+}
+export default async function BlogPage({ searchParams }: BLogPageProps) {
   const { search } = await searchParams
   const posts = await getAllPosts(search)
   return (

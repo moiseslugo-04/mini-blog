@@ -1,6 +1,6 @@
 // hooks/posts/useCreatePost.ts
-import { useActionState, startTransition, useEffect } from 'react'
-import { redirect, useRouter } from 'next/navigation'
+import { useActionState } from 'react'
+import { useRouter } from 'next/navigation'
 import {
   createPostAction,
   CreatePostState,
@@ -33,17 +33,12 @@ export function useCreatePost() {
       imageUrl: '',
     },
   })
-  useEffect(() => {
-    if (state.success && state.data) {
-      redirect('/dashboard')
-    }
-  }, [state.success, state.data, router])
   const handleSubmit = (data: PostSchema) => {
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => {
       formData.append(key, value.toString())
     })
-    startTransition(() => formAction(formData))
+    formAction(formData)
   }
   const handleCancel = () => router.push('/dashboard')
 

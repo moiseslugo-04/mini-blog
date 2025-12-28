@@ -1,5 +1,5 @@
 // hooks/posts/useCreatePost.ts
-import { useActionState, startTransition, useEffect } from 'react'
+import { useActionState, useEffect } from 'react'
 import { redirect, useRouter } from 'next/navigation'
 import {
   updatePostAction,
@@ -46,7 +46,7 @@ export function useUpdatePost({ post }: { post: PostSchema & { id: string } }) {
         formData.append(key, value.toString())
       }
     })
-    startTransition(() => formAction(formData))
+    formAction(formData)
   }
   const handleCancel = () => router.push('/dashboard')
 
