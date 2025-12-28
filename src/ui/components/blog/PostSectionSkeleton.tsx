@@ -16,7 +16,7 @@ export function PostSectionSkeleton() {
               {/* Content */}
               <div className='flex flex-col gap-3 grow p-2'>
                 {/* Title */}
-                <Skeleton className='bg-red-400!  w-full h-3' />
+                <Skeleton className='bg-gray-400!  w-full h-3' />
 
                 {/* Meta Information */}
                 <Skeleton className='bg-gray-500!  w-full h-3' />
