@@ -129,17 +129,18 @@ Contributions are welcome! Please follow these steps:
 
 Please ensure your code follows the project's coding standards and includes appropriate tests.
 
-## 📄 License
+<!-- ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+ -->
 
 ## 📧 Contact
 
 **Moises Lugo**
 
 - GitHub: [@moiseslugo-04](https://github.com/moiseslugo-04)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- LinkedIn: [Moises Lugo](https://www.linkedin.com/in/moises-lugo-352b892a4/)
+- Email: moiseslugo9134@gmail.com
 - Portfolio: [https://moiseslugo.com](https://moiseslugo.com)
 
 Feel free to reach out for collaborations, opportunities, or questions!
