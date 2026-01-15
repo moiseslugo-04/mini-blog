@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { UseFormReturn } from 'react-hook-form'
+import { Controller, UseFormReturn } from 'react-hook-form'
 import { Input } from '@components/shadcn/input'
 import { Textarea } from '@components/shadcn/textarea'
 import { Button } from '@components/shadcn/button'
@@ -23,16 +23,17 @@ import {
 } from '@components/shadcn/form'
 import { Loader2, Check } from 'lucide-react'
 import matter from 'gray-matter'
-import { PostSchema } from '@/lib/features/posts/client/schema/posts'
 import Image from 'next/image'
 import { PostContent } from '../posts/PostContent'
+import { usePostForm } from '@lib/hooks/usePostForm'
+import { PostDTO } from '@/lib/features/posts/types'
 interface PostFromProps {
-  form: UseFormReturn<PostSchema>
-  OnSubmit: (data: PostSchema) => void
-  loading: boolean
   action: string
+  post: PostDTO
 }
-export function PostForm({ form, OnSubmit, loading, action }: PostFromProps) {
+export function PostForm({ action, post }: PostFromProps) {
+  const { form, onSubmit, loading } = usePostForm({ post })
+
   const [imageLoading, setImageLoading] = useState(false)
   const contentValue = form.watch('content')
   const { content: markdownContent } = matter(contentValue || '')
@@ -58,12 +59,11 @@ export function PostForm({ form, OnSubmit, loading, action }: PostFromProps) {
       setImageLoading(false)
     }
   }
-
   return (
     <CardContent>
       {loading || (imageLoading && <p>Loading...</p>)}
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(OnSubmit)} className='space-y-6'>
+        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
           <FormField
             name='title'
             render={({ field }) => (
@@ -131,9 +131,9 @@ export const authConfig = { /* ... */ }
             name='category'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Categoría</FormLabel>
+                <FormLabel>Category</FormLabel>
                 <FormControl>
-                  <Input placeholder='Tecnología, Diseño, etc...' {...field} />
+                  <Input placeholder='Technology, Design, etc...' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

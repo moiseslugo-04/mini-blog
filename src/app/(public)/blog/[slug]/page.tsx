@@ -11,7 +11,7 @@ export default async function PostPage({ params }: PageProps<'/blog/[slug]'>) {
   const { author, ...post } = data
   const date = formattedDate(post.createdAt)
   return (
-    <article className='@container w-full flex flex-col py-5 px-5 gap-4'>
+    <article className='w-full flex flex-col py-5 px-5 gap-4 max-w-3xl mx-auto'>
       {/* Responsive banner image */}
       <PostHeroImage imageUrl={post.imageUrl} title={post.title} />
       {/*Post meta Content */}

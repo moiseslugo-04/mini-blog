@@ -1,4 +1,6 @@
 import { Github, Linkedin } from 'lucide-react'
+import { Copyright } from './Copyright'
+import { Suspense } from 'react'
 
 export function Footer() {
   return (
@@ -6,10 +8,9 @@ export function Footer() {
       <div className='container max-w-6xl mx-auto px-4'>
         <div className='flex justify-center items-center gap-6'>
           {/* Copyright */}
-          <p className='text-xs text-muted-foreground text-center'>
-            © {new Date().getFullYear()} Moises Lugo. All rights reserved.
-          </p>
-
+          <Suspense fallback={<p>Loading...</p>}>
+            <Copyright />
+          </Suspense>
           {/* Social Links */}
           <div className='flex items-center gap-3'>
             <a

@@ -6,6 +6,7 @@ import { ThemeProvider } from '@components/darkMode/theme-provider'
 import { Navbar } from '@components/navbar'
 import { Footer } from '@components/Footer'
 import { SessionProvider } from 'next-auth/react'
+import { Suspense } from 'react'
 export const metadata: Metadata = {
   title: 'Moises Lugo - Frontend Developer Portfolio',
   description:
@@ -77,7 +78,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SessionProvider>
-            <Navbar />
+            <Suspense fallback={<p>Loading...</p>}>
+              <Navbar />
+            </Suspense>
             <main className='flex flex-1 w-full '>{children}</main>
             <Footer />
           </SessionProvider>

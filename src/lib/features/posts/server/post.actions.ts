@@ -4,6 +4,7 @@ import { postSchema } from '@/lib/features/posts/client/schema/posts'
 import { PostDTO } from '../types'
 import { createNewPost, deleteUserPost, updateUserPost } from './post.service'
 import { redirect } from 'next/navigation'
+import { isRedirectError } from 'next/dist/client/components/redirect-error'
 export type CreatePostState = {
   success: boolean
   data: PostDTO | null
@@ -53,16 +54,13 @@ export type UpdatePostState = {
 }
 
 export async function updatePostAction(
-  _prevState: UpdatePostState,
   formData: FormData
 ): Promise<UpdatePostState> {
   try {
-    const updatedPost = await updateUserPost(formData)
-    revalidatePath('/blog')
-    revalidatePath('/dashboard')
-    return { success: true, data: updatedPost }
+    await updateUserPost(formData)
+    redirect('/dashboard')
   } catch (error) {
-    console.log(error)
+    if (isRedirectError(error)) throw error
     throw new Error('Error updating post')
   }
 }

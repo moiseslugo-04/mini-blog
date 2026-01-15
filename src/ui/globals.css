@@ -131,6 +131,7 @@
 
 button {
   cursor: pointer;
+  user-select: none;
 }
 @layer base {
   * {
@@ -162,7 +163,7 @@ button {
 
 /* slow */
 .animate-scroll-slow {
-  animation: scroll 35s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 
 /* hero animation */

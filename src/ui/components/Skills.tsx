@@ -29,7 +29,7 @@ export function Skills() {
           <div className='relative max-w-5xl mx-auto'>
             <TooltipProvider delayDuration={100}>
               <div className='overflow-hidden'>
-                <div className='flex gap-10 animate-scroll-slow'>
+                <div className='flex gap-10  animate-scroll-fast md:animate-scroll-slow'>
                   {[...skills, ...skills].map((skill, index) => (
                     <div
                       key={`${skill}-${index}`}

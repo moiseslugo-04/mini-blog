@@ -16,8 +16,8 @@ export const updatePostSchema = z.object({
   content: z.string().min(10).optional(),
   imageUrl: z.url().optional(),
   category: z.string().optional(),
-  published: z.boolean().optional(),
-  readTime: z.number().int().positive().optional(),
+  published: z.coerce.boolean().optional(),
+  readTime: z.coerce.number().int().positive().optional(),
 })
 
 export type UpdatePostInput = z.infer<typeof updatePostSchema>

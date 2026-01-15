@@ -22,9 +22,8 @@ import { useLogin } from '@/lib/hooks/useLogin'
 
 export function UserForm() {
   const { loading, form, handleSubmit, error } = useLogin()
-
   return (
-    <Card className='min-w-[300px] min-h-[300px] basis-2xl flex flex-col items-center justify-center mx-auto mt-10 shadow-lg border border-gray-200'>
+    <Card className='min-w-75 min-h-75 basis-2xl flex flex-col items-center justify-center mx-auto mt-10 shadow-lg border border-gray-200'>
       <CardHeader>
         <CardTitle className='text-xl font-semibold'>Login Admin</CardTitle>
       </CardHeader>

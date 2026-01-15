@@ -1,3 +1,5 @@
+import { ShieldUser, Home, LibraryBig, Hammer } from 'lucide-react'
+
 export const skills = [
   { name: 'Next.js', icon: 'nextjs', category: 'Fullstack' },
   { name: 'TypeScript', icon: 'ts', category: 'Language' },
@@ -15,4 +17,31 @@ export const skills = [
 export const stats = [
   { number: '3+', label: 'Years Learning' },
   { number: '4', label: 'Categories' },
+]
+
+export const links = [
+  {
+    href: '/',
+    label: 'Home',
+    Icon: Home,
+    view: '/home-picture.png',
+  },
+  {
+    href: '/blog',
+    label: 'Blog',
+    Icon: LibraryBig,
+    view: '/blog-picture.png',
+  },
+  {
+    href: '/projects',
+    label: 'Projects',
+    Icon: Hammer,
+    view: '/development.png',
+  },
+  {
+    href: '/dashboard',
+    label: 'Dashboard',
+    Icon: ShieldUser,
+    view: '/development.png',
+  },
 ]
