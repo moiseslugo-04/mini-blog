@@ -1,8 +1,8 @@
 // middleware.ts
-import { auth } from '@/lib/features/auth/auth'
+import { auth } from '@features/auth/auth'
 import { NextRequest, NextResponse } from 'next/server'
 
-const protectedRoutes = ['/dashboard']
+const protectedRoutes = ['/admin']
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const session = await auth()
@@ -13,7 +13,7 @@ export async function proxy(request: NextRequest) {
   const isAuth = pathname === '/login'
 
   if (isAuth && session?.user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    return NextResponse.redirect(new URL('/admin', request.url))
   }
   if (isProtectedRoute && !isAuth && !session?.user) {
     const loginUrl = new URL('/login', request.url)
@@ -24,5 +24,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login'],
+  matcher: ['/admin/:path*', '/login'],
 }

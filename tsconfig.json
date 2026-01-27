@@ -21,10 +21,11 @@
     "paths": {
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
-      "@features/*": ["./src/lib/features/*"],
+      "@features/*": ["./src/features/*"],
       "@ui/*": ["./src/ui/*"],
       "@components/*": ["./src/ui/components/*"],
-      "@lib/*": ["./src/lib/*"]
+      "@lib/*": ["./src/lib/*"],
+      "@shared/*": ["./src/shared/*"]
     }
   },
   "include": [

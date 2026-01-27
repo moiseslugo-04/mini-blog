@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { geistMono, geistSans } from '@ui/fonts'
+import { geistMono, geistSans } from '@/fonts'
 import Head from 'next/head'
-import '@ui/globals.css'
-import { ThemeProvider } from '@components/darkMode/theme-provider'
-import { Navbar } from '@components/navbar'
-import { Footer } from '@components/Footer'
+import '@/globals.css'
+import { ThemeProvider } from '@features/theme/components/theme-provider'
+import { Footer } from '@shared/Footer'
 import { SessionProvider } from 'next-auth/react'
-import { Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from 'sonner'
 export const metadata: Metadata = {
   title: 'Moises Lugo - Frontend Developer Portfolio',
   description:
@@ -67,10 +67,9 @@ export default function RootLayout({
       <Head>
         <link rel='icon' href='/favicon.png' type='image/x-icon' />
       </Head>
-      <body
-        suppressHydrationWarning
-        className='antialiased h-full min-h-screen flex flex-col bg-background text-foreground relative'
-      >
+      <body className='antialiased max-h-full  flex flex-col bg-background text-foreground'>
+        <Analytics />
+
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
@@ -78,13 +77,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SessionProvider>
-            <Suspense fallback={<p>Loading...</p>}>
-              <Navbar />
-            </Suspense>
-            <main className='flex flex-1 w-full '>{children}</main>
-            <Footer />
+            {/* Main content */}
+            <main className='flex-1'>{children}</main>
           </SessionProvider>
+          {/* Footer always at bottom */}
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   )

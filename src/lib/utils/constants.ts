@@ -14,10 +14,7 @@ export const skills = [
   { name: 'Prisma', icon: 'prisma', category: 'ORM' },
 ]
 
-export const stats = [
-  { number: '3+', label: 'Years Learning' },
-  { number: '4', label: 'Categories' },
-]
+export const stats = [{ number: '3+', label: 'Years Learning' }]
 
 export const links = [
   {
@@ -39,7 +36,7 @@ export const links = [
     view: '/development.png',
   },
   {
-    href: '/dashboard',
+    href: '/admin',
     label: 'Dashboard',
     Icon: ShieldUser,
     view: '/development.png',

@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <main className='flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800 dark:from-gray-900 dark:to-gray-950 dark:text-gray-100 px-4 transition-colors duration-500'>
-      <div className='text-center animate-fade-in-up'>
+    <main className='flex flex-col min-h-dvh items-center justify-center  min-w-full bg-linear-to-b from-gray-50 to-gray-100 text-gray-800 dark:from-gray-900 dark:to-gray-950 dark:text-gray-100 px-4 transition-colors duration-500'>
+      <div className='text-center animate-fade-in-up max-w-lg'>
         <h1 className='text-[8rem] font-extrabold text-blue-600 dark:text-blue-400 drop-shadow-sm mb-2'>
           404
         </h1>
@@ -21,22 +21,6 @@ export default function NotFound() {
           Go Back Home
         </Link>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          0% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out both;
-        }
-      `}</style>
     </main>
   )
 }
