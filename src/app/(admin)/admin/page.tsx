@@ -1,9 +1,6 @@
 import { PageHeader } from '@shared/PageHeader'
 import { StatsCard } from '@features/dashboard/components/StatCard'
-import { Button } from '@shared/ui/button'
-import { FileText, FolderKanban, Eye, Send, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import { ContentTable } from '@/features/dashboard/components/ContentTable'
+import { FileText, FolderKanban, Eye, Send } from 'lucide-react'
 
 export default function AdminPage() {
   return (
