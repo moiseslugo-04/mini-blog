@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { getTagsList } from '@features/tags/tags.repository'
 import { getPostBySlug } from '@features/blog/blog.repository'
 import { updatePostAction } from '@/features/blog/server.actions'
+import { PostDTO } from '@/features/blog/types'
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const post = (await getPostBySlug(slug)) as PostDTO
   const tags = await getTagsList()
   if (!post) return notFound()
   return (

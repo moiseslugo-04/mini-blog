@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import {
   FormControl,
   FormLabel,
@@ -10,15 +11,13 @@ type TextAreaProps = {
   label: string
   placeholder: string
   name: string
-  cols?: number
-  rows?: number
+  high?: number
 }
 export function TextAreaControl({
   label,
   placeholder,
   name,
-  cols = 10,
-  rows = 12,
+  high,
 }: TextAreaProps) {
   return (
     <FormField
@@ -28,10 +27,11 @@ export function TextAreaControl({
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Textarea
-              cols={cols}
-              rows={1}
               {...field}
-              className='h-80 bg-zinc-900 border-zinc-800 resize-none'
+              className={cn(
+                'bg-zinc-900 border-zinc-800 resize-none w-full',
+                high ? `h-${high}` : 'h-80'
+              )}
               placeholder={placeholder}
             />
           </FormControl>

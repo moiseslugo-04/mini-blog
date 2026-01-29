@@ -8,7 +8,6 @@ export const postSchema = z.object({
   tags: z
     .array(z.string().min(1, 'Tag cannot be empty'))
     .min(1, 'At least one tag is required'),
-  newTags: z.array(z.string().min(1, 'New tag cannot be empty')).optional(),
   published: z.boolean(),
   readTime: z.number().min(1).max(60),
 })

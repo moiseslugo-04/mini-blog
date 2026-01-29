@@ -4,12 +4,13 @@ import { PostForm } from '@/features/blog/components/PostForm'
 import Link from 'next/link'
 import { getPostBySlug } from '@/features/blog/blog.repository'
 import { updatePostAction } from '@/features/blog/server.actions'
+import { PostDTO } from '@/features/blog/types'
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const post = (await getPostBySlug(slug)) as PostDTO
   if (!post) return notFound()
   return (
     <div className='max-w-5xl mx-auto mt-10 space-y-6 relative'>

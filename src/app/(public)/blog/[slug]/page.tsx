@@ -5,13 +5,14 @@ import { PostContent } from '@/features/blog/components/PostContent'
 import { PostHeroImage } from '@/features/blog/components/PostHeroImage'
 import { getPostBySlug } from '@/features/blog/blog.repository'
 import { PostTags } from '@/features/tags/components/PostTags'
+import { PostDTO } from '@/features/blog/types'
 
 interface PostProps {
   params: Promise<{ slug: string }>
 }
 export default async function PostPage({ params }: PostProps) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+  const post = (await getPostBySlug(slug)) as PostDTO
   if (!post) return notFound()
   const { author, tags } = post
   const date = formattedDate(post.createdAt)

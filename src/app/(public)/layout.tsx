@@ -7,7 +7,7 @@ export default function PublicLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className='flex min-h-screen flex-col overflow-auto'>
+    <div className='flex min-h-screen flex-col '>
       <Suspense fallback={<p>Loading...</p>}>
         <Navbar />
       </Suspense>

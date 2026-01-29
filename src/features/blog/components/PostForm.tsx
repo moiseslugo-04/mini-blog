@@ -70,15 +70,14 @@ export function PostForm(props: PostFromProps) {
   }
   const onSubmitForm = async (data: PostInput) => {
     if (mode === 'edit') {
-      action(props.post.id, data)
+      await action(props.post.id, data)
       return
     }
-    action(data)
+    await action(data)
   }
-
   return (
     <CardContent>
-      {loading && <LoadingFallback text='Creating Post....' />}
+      {!loading && <LoadingFallback text='Creating Post....' />}
       <Form {...form}>
         <form onSubmit={onSubmit(onSubmitForm)} className='space-y-6'>
           <InputControl
@@ -87,8 +86,7 @@ export function PostForm(props: PostFromProps) {
             name='title'
           />
           <TextAreaControl
-            cols={5}
-            rows={2}
+            high={200}
             placeholder='sow'
             name='description'
             label='Description'
@@ -96,7 +94,7 @@ export function PostForm(props: PostFromProps) {
 
           <MarkEditor />
           <TagManager
-            defaultTags={tags}
+            availableTags={tags}
             initialSelectedTags={mode === 'edit' ? props.post.tags : []}
             maxTags={10}
           />

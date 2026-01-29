@@ -3,7 +3,8 @@ import 'server-only'
 import prisma from '@lib/prisma'
 import slugify from 'slugify'
 import { nanoid } from 'nanoid'
-import { PostInput } from './types'
+import { PostDTO, PostInput } from './types'
+import { formatTagName } from './utils/tag.helper'
 export async function create(data: PostInput) {
   const { tags, ...post } = data
   return prisma.post.create({
@@ -54,10 +55,17 @@ export async function getById(postId: string) {
 }
 
 export async function getPostBySlug(slug: string) {
-  return prisma.post.findUnique({
+  const post = await prisma.post.findUnique({
     where: { slug },
     include: { tags: true, author: true },
   })
+  return {
+    ...post,
+    tags: post?.tags.map((tag) => ({
+      ...tag,
+      displayName: formatTagName(tag.name),
+    })),
+  }
 }
 
 export async function getAll(searchParams?: {

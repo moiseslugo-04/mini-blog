@@ -47,7 +47,7 @@ export async function PostCard({
           backdrop-blur-md
         '
               >
-                #{tag.name}
+                #{tag.displayName}
               </span>
             ))}
           </div>

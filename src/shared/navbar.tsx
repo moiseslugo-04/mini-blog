@@ -18,7 +18,7 @@ export function Navbar() {
   const pathname = usePathname()
   return (
     <nav
-      className='fixed z-100 left-1/2 -translate-x-1/2 bottom-12 bg-gray-900/60 rounded-md
+      className='fixed z-100 left-1/2 -translate-x-1/2 bottom-8 bg-gray-900/60 rounded-md
     backdrop-blur-md
     shadow-lg
    '

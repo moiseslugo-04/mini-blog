@@ -11,15 +11,17 @@ import { nanoid } from 'nanoid'
 import { useFormContext } from 'react-hook-form'
 import { PostInput } from '../../blog/post.schema'
 import { TagDTO } from '@features/tags/types'
+import { formatTagName, normalizeTag } from '@/features/blog/utils/tag.helper'
+import { randomUUID } from 'crypto'
 
 interface TagManagerProps {
-  defaultTags?: TagDTO[]
+  availableTags?: TagDTO[]
   initialSelectedTags?: TagDTO[]
   maxTags?: number
 }
 
 const TagManager = ({
-  defaultTags = [],
+  availableTags = [],
   initialSelectedTags = [],
   maxTags = 10,
 }: TagManagerProps) => {
@@ -28,24 +30,24 @@ const TagManager = ({
 
   const [selectedTags, setSelectedTags] =
     useState<TagDTO[]>(initialSelectedTags)
-  const [availableTags, setAvailableTags] = useState(defaultTags)
-
   const addTag = (tag: TagDTO) => {
     setSelectedTags((prev) => [...prev, { ...tag, removable: true }])
     const current = getValues('tags') || []
     setValue('tags', [...current, tag.name], { shouldValidate: true })
     toast.success(`Tag "${tag.name}" added successfully`)
+    console.log(current)
   }
 
   const removeTag = (tag: TagDTO) => {
     setSelectedTags((prev) => prev.filter((t) => t.id !== tag.id))
-    setAvailableTags((prev) => [...prev, tag])
     const current = getValues('tags') || []
     setValue(
       'tags',
       current.filter((tagName) => tagName !== tag.name),
       { shouldValidate: true }
     )
+    console.log(current)
+
     toast.success(`Tag "${tag.name}" removed successfully`)
   }
   const handleToggleTag = (tagId: string) => {
@@ -57,19 +59,19 @@ const TagManager = ({
   }
 
   const handleNewTag = (tagName: string) => {
-    const id = nanoid(8)
+    const name = tagName.trim().toLowerCase()
+    const displayName = formatTagName(name)
+    const id = randomUUID()
     const slug = `${slugify(tagName, { lower: true })}-${nanoid(5)}`
-    const exist = availableTags.some(
-      (t) => t.name.toLowerCase() === tagName.toLowerCase()
-    )
-    if (exist) {
-      toast.error('Tag already exist')
-      return
-    }
-    const newTag = { id, slug, name: tagName, isPublic: false }
+    const exist = availableTags.some((t) => t.name === name)
+
+    if (exist) return toast.error('Tag already exist')
+
+    const newTag = { id, slug, name, isPublic: false, displayName }
+
     setSelectedTags((prev) => [...prev, newTag])
     const currentNew = getValues('tags') || []
-    setValue('tags', [...currentNew, tagName], { shouldValidate: true })
+    setValue('tags', [...currentNew, name], { shouldValidate: true })
   }
   const filteredAvailableTags = availableTags.filter((tag) => {
     const ids = selectedTags.map((t) => t.id)

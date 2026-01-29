@@ -1,3 +1,6 @@
+import { TagDTO } from '@/features/tags/types'
+import { Tag } from '@prisma/client'
+
 export const TAG_STYLES = {
   blue: {
     base: 'bg-blue-100 text-blue-800 border-blue-200',
@@ -70,6 +73,16 @@ export function getTagColor(tagName: string) {
 
   const index = Math.abs(hash) % TAG_COLORS.length
   return TAG_COLORS[index]
+}
+export function normalizeTag(tags: string[]) {
+  return tags.map((tag) => tag.trim().toLowerCase())
+}
+
+export function formatTagName(name: string) {
+  return name
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 export const tagsMock = [

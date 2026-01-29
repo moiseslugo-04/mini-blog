@@ -28,7 +28,6 @@ export async function updatePostAction(postId: string, data: PostInput) {
   const parsedData = postSchema.safeParse(data)
   if (!parsedData.success)
     return { success: false, error: 'INVALID_DATA', data: null }
-
   const response = await updatePost(postId, data)
   console.log(response)
 

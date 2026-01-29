@@ -10,9 +10,9 @@ export function usePostForm({ post }: PostFormProps = {}) {
   const form = useForm<PostSchema>({
     defaultValues: {
       title: post?.title ?? '',
+      description: post?.description ?? '',
       content: post?.content ?? '',
-      tags: post?.tags.map((t) => t.id) ?? [],
-      newTags: post?.newTags ?? [],
+      tags: post?.tags.map((t) => t.name) ?? [],
       readTime: post?.readTime ?? 1,
       imageUrl: post?.imageUrl ?? '',
       published: post?.published ?? false,
