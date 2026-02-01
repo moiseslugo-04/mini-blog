@@ -28,9 +28,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <CardTitle className='text-xl'>📝 Update Post</CardTitle>
           <PostForm
             mode='edit'
-            post={post}
-            action={updatePostAction}
-            label='update Post'
+            defaultValues={post}
+            onSubmit={updatePostAction}
             tags={tags}
           />
         </CardHeader>

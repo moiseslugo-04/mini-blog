@@ -17,9 +17,7 @@ export default function AdminLayout({
 
       {/* Main area */}
       <div className='flex flex-1 flex-col max-h-screen '>
-        <Suspense fallback={<div>Loading...</div>}>
-          <TopBar />
-        </Suspense>
+        <TopBar />
         {/* Scroll container */}
         <main className='flex-1 overflow-y-auto bg-background p-4'>
           {children}

@@ -24,6 +24,5 @@ export function usePostForm({ post }: PostFormProps = {}) {
   return {
     form,
     loading: form.formState.isSubmitting,
-    onSubmit: form.handleSubmit,
   }
 }

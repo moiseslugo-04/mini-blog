@@ -4,6 +4,5 @@ export type TagDTO = {
   name: string
   displayName: string
   isPublic: boolean
-  isNew?: boolean
   removable?: boolean
 }

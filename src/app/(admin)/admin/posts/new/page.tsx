@@ -22,12 +22,7 @@ export default async function CreatePostPage() {
             <CardTitle className='text-xl'>📝 Create new post</CardTitle>
           </CardHeader>
           <CardContent>
-            <PostForm
-              mode='create'
-              label='create Post'
-              action={createPostAction}
-              tags={tags}
-            />
+            <PostForm mode='create' onSubmit={createPostAction} tags={tags} />
           </CardContent>
         </Card>
       </div>

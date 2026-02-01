@@ -1,12 +1,16 @@
+'use client'
+
 import Link from 'next/link'
 import { LogOut, ChevronLeft } from 'lucide-react'
 import { cn } from '@lib/utils'
 import { adminNavigation } from '../config/routes'
+import { usePathname } from 'next/navigation'
 interface SidebarProps {
   collapsed?: boolean
 }
 
 export function Sidebar({ collapsed = false }: SidebarProps) {
+  const pathname = usePathname()
   return (
     <aside
       className={cn(
@@ -29,7 +33,9 @@ export function Sidebar({ collapsed = false }: SidebarProps) {
       {/* Navigation */}
       <nav className='flex-1 space-y-1 p-3'>
         {adminNavigation.map((item, index) => {
-          const isActive = index === 0
+          const isIndex = index === 0
+          const isActive = pathname === item.href
+
           return (
             <Link
               key={item.name}
@@ -38,7 +44,9 @@ export function Sidebar({ collapsed = false }: SidebarProps) {
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                 isActive
                   ? 'bg-primary text-foreground'
-                  : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'
+                  : 'text-muted-foreground hover:bg-primary/70 hover:text-foreground',
+                isIndex &&
+                  'bg-secondary text-primary hover:bg-primary hover:text-secondary'
               )}
             >
               <item.icon className='h-5 w-5 shrink-0' />

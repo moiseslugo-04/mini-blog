@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import cloudinary from '@lib/cloudinary'
 import type { UploadApiResponse } from 'cloudinary'
-export const POST = async (req: NextRequest) => {
+
+type UploadSuccessResponse = {
+  url: string
+  publicId: string
+}
+
+type UploadErrorResponse = {
+  error: string
+}
+
+export const POST = async (
+  req: NextRequest
+): Promise<NextResponse<UploadSuccessResponse | UploadErrorResponse>> => {
   try {
     const formData = await req.formData()
     const file = formData.get('file') as Blob
@@ -29,7 +41,7 @@ export const POST = async (req: NextRequest) => {
         .end(buffer)
     })
     const { secure_url, public_id } = result
-    return NextResponse.json({ url: secure_url, public_id })
+    return NextResponse.json({ url: secure_url, publicId: public_id })
   } catch (error) {
     console.error(error)
     return NextResponse.json(

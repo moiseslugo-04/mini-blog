@@ -3,7 +3,7 @@ import { TagDTO } from '../types'
 import { Tag } from './Tag'
 
 interface TagListProps {
-  tags: TagDTO[]
+  tags: { name: string; displayName: string; removable?: boolean }[]
   onToggleTag: (id: string) => void
   removable?: boolean
   className?: string
@@ -17,7 +17,7 @@ export function TagList({ tags, onToggleTag, className = '' }: TagListProps) {
         const styles = TAG_STYLES[colorKey] || TAG_STYLES['blue']
         return (
           <Tag
-            key={tag.id}
+            key={tag.name}
             tag={tag}
             className={`border rounded px-2 py-1 text-sm transition ${styles.base} ${styles.hover} cursor-pointer`}
             onToggleTag={onToggleTag}

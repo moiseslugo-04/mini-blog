@@ -3,7 +3,7 @@ import 'server-only'
 import prisma from '@lib/prisma'
 import slugify from 'slugify'
 import { nanoid } from 'nanoid'
-import { PostDTO, PostInput } from './types'
+import { PostInput } from './types'
 import { formatTagName } from './utils/tag.helper'
 export async function create(data: PostInput) {
   const { tags, ...post } = data

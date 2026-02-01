@@ -19,7 +19,7 @@ export async function TopBar({ currentPath }: TopBarProps) {
   return (
     <header className='flex h-16 items-center justify-between border-b border-border bg-card px-4 lg:px-6'>
       <div className='flex items-center gap-4'>
-        <MobileNav currentPath={currentPath} />
+        <MobileNav />
         <div className='relative hidden sm:block'>
           <Search className='absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
           <Input type='search' placeholder='Search...' className='w-64 pl-9' />

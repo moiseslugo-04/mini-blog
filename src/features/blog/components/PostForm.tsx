@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Input } from '@shared/ui/input'
 import { Button } from '@shared/ui/button'
 import { CardContent } from '@shared/ui/card'
@@ -15,71 +14,48 @@ import {
 } from '@/shared/ui/form'
 import { Loader2, Check } from 'lucide-react'
 import Image from 'next/image'
-import { usePostForm } from '@features/blog/hooks/usePostForm'
 import { PostDTO } from '@features/blog/types'
 import { PostInput } from '../post.schema'
 
-type PostFromProps =
-  | {
-      mode: 'edit'
-      post: PostDTO
-      label: string
-      action: (postId: string, data: PostInput) => void
-      tags?: TagDTO[]
-    }
-  | {
-      mode: 'create'
-      label: string
-      action: (data: PostInput) => void
-      tags?: TagDTO[]
-    }
+type CreateForm = {
+  mode: 'create'
+  defaultValues?: undefined
+  tags: TagDTO[]
+  onSubmit: (data: PostInput) => Promise<void>
+}
+
+type EditForm = {
+  mode: 'edit'
+  tags: TagDTO[]
+  defaultValues?: PostDTO
+  onSubmit: (postId: string, updates: PostInput) => Promise<void>
+}
+type FormProps = CreateForm | EditForm
+
 import TagManager from '@features/tags/components/TagManager'
 import { InputControl } from '@shared/InputControl'
 import { MarkEditor } from './MarkEditor'
 import { LoadingFallback } from '@shared/LoadingFallback'
 import { TagDTO } from '@features/tags/types'
 import { TextAreaControl } from '@/shared/TextAreaControl'
-export function PostForm(props: PostFromProps) {
-  const { mode, action, label, tags = [] } = props
-  const [imageLoading, setImageLoading] = useState(false)
-  const { form, onSubmit, loading } = usePostForm({
-    post: mode === 'edit' ? props.post : undefined,
-  })
+import { usePostController } from '../hooks/usePostController'
 
-  const imageLoad = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    setImageLoading(true)
-    try {
-      const formData = new FormData()
-      formData.append('file', file)
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      })
-      const data = await res.json()
-      form.setValue('imageUrl', data.url, {
-        shouldValidate: true,
-        shouldDirty: true,
-      })
-    } catch (error) {
-      console.error(error)
-    } finally {
-      setImageLoading(false)
+export function PostForm({ onSubmit, tags, mode, defaultValues }: FormProps) {
+  const { selectedTags, imageLoading, uploadImage, loading, form } =
+    usePostController({ defaultValues })
+  const handleSubmit = async (data: PostInput) => {
+    const postId = defaultValues?.id as string
+    if (mode === 'edit' && postId) {
+      await onSubmit(postId, data)
+    } else if (mode === 'create') {
+      await onSubmit(data)
     }
   }
-  const onSubmitForm = async (data: PostInput) => {
-    if (mode === 'edit') {
-      await action(props.post.id, data)
-      return
-    }
-    await action(data)
-  }
+
   return (
     <CardContent>
-      {!loading && <LoadingFallback text='Creating Post....' />}
       <Form {...form}>
-        <form onSubmit={onSubmit(onSubmitForm)} className='space-y-6'>
+        <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-6'>
           <InputControl
             label='Title'
             placeholder='Ex: How to use Next.js with Prisma'
@@ -95,7 +71,7 @@ export function PostForm(props: PostFromProps) {
           <MarkEditor />
           <TagManager
             availableTags={tags}
-            initialSelectedTags={mode === 'edit' ? props.post.tags : []}
+            selectedTags={selectedTags}
             maxTags={10}
           />
           <FormField
@@ -104,7 +80,7 @@ export function PostForm(props: PostFromProps) {
               <FormItem>
                 <FormLabel>Image del post</FormLabel>
                 <FormControl>
-                  <Input type='file' accept='image/*' onChange={imageLoad} />
+                  <Input type='file' accept='image/*' onChange={uploadImage} />
                 </FormControl>
                 <FormMessage />
                 {imageLoading ? (
@@ -136,7 +112,14 @@ export function PostForm(props: PostFromProps) {
                       type='number'
                       placeholder='Ej: 5'
                       {...field}
-                      onChange={(e) => field.onChange(+e.target.value)}
+                      onChange={(e) => {
+                        const time = Number(e.target.value)
+                        if (time <= 0) return
+                        form.setValue('readTime', time, {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        })
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -148,12 +131,13 @@ export function PostForm(props: PostFromProps) {
           <Button type='submit' className='w-full flex items-center gap-2'>
             {loading ? (
               <>
-                <Loader2 className='h-4 w-4 animate-spin' /> Saving...
+                <Loader2 className='h-4 w-4 animate-spin' />
+                {mode === 'create' ? 'Creating post...' : 'Updating posts...'}
               </>
             ) : (
               <>
                 <Check className='h-4 w-4' />
-                {label}
+                {mode === 'create' ? 'Create new Post' : 'Update post'}
               </>
             )}
           </Button>

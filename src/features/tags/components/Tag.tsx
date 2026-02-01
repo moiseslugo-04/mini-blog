@@ -2,15 +2,15 @@ import { X } from 'lucide-react'
 import { TagDTO } from '../types'
 
 interface TagProps {
-  tag: TagDTO
+  tag: { name: string; displayName: string; removable?: boolean }
   className: string
   onToggleTag: (tag: string) => void
 }
 
 export function Tag({ tag, className, onToggleTag }: TagProps) {
   return (
-    <span className={className} onClick={() => onToggleTag(tag.id)}>
-      {tag.name}
+    <span className={className} onClick={() => onToggleTag(tag.name)}>
+      {tag.displayName}
       {tag.removable && (
         <button
           type='button'
