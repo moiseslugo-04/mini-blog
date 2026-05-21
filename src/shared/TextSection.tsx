@@ -12,34 +12,36 @@ export function TextSection() {
         </h1>
 
         <p className='text-xl md:text-2xl text-muted-foreground max-w-xl'>
-          Building digital experiences that are{' '}
-          <span className='font-semibold text-foreground'>simple</span>,{' '}
-          <span className='font-semibold text-foreground'>efficient</span>, and{' '}
-          <span className='font-semibold text-foreground'>impactful</span>.
+          Frontend Developer focused on building modern, and user-friendly web applications using {' '}
+          <span className='font-semibold text-foreground'>React</span>,{' '}
+          <span className='font-semibold text-foreground'> Next.js</span>, and{' '}
+          <span className='font-semibold text-foreground'>TypeScript</span>.
         </p>
       </div>
 
       {/* Mission Statement */}
       <div className='space-y-4 max-w-xl'>
         <p className='text-lg text-muted-foreground leading-relaxed'>
-          I transform complex ideas into clean, user-focused interfaces.
-          Currently seeking to join a team where I can contribute to meaningful
-          projects and grow through high-quality, collaborative development.
+          I enjoy transforming ideas into real products, working with APIs, authentication,
+          and modern frontend development practices.
+          
+          Currently looking for an opportunity to grow as a Frontend or Full Stack Developer 
+          while contributing to real-world projects and collaborative teams.
         </p>
 
         {/* Quick Stats */}
         <div className='flex flex-wrap justify-center items-center lg:justify-start not-only-of-type: gap-4 pt-4 border-t border-border'>
           <div className='flex items-center gap-2'>
             <Zap className='w-4 h-4 text-primary' />
-            <span className='font-medium'>Remote Ready</span>
+            <span className='font-medium'>Frontend Focused</span>
           </div>
           <div className='flex items-center gap-1'>
             <Target className='w-4 h-4 text-primary' />
-            <span className='font-medium'>Problem Solver</span>
+            <span className='font-medium'>API Integration</span>
           </div>
           <div className='flex items-center gap-1'>
             <Sparkles className='w-4 h-4 text-primary' />
-            <span className='font-medium'>Fast Learner</span>
+            <span className='font-medium'>Responsive Design</span>
           </div>
         </div>
       </div>
