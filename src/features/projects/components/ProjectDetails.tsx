@@ -1,5 +1,5 @@
 import { ExternalLink, Github, X, CheckCircle } from 'lucide-react'
-import { Button } from '@shared/ui/button'
+import { Button } from '@/components/ui/button'
 interface ProjectDetailsProps {
   open: boolean
   toggleOpen: () => void

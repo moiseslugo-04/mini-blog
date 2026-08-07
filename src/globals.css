@@ -86,6 +86,7 @@
   --sidebar-accent-foreground: oklch(0.25 0.02 260);
   --sidebar-border: oklch(0.88 0.006 260);
   --sidebar-ring: oklch(0.55 0.12 265);
+  --navbar-background: oklch(0.94 0.008 260);
 }
 
 .dark {
@@ -127,6 +128,7 @@
   --sidebar-accent-foreground: oklch(0.98 0.002 247);
   --sidebar-border: oklch(0.28 0.03 260);
   --sidebar-ring: oklch(0.65 0.14 265);
+  --navbar-background: oklch(21% 0.034 264.665);
 }
 
 button {

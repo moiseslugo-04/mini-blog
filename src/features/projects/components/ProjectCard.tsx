@@ -7,9 +7,9 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from '@/shared/ui/card'
-import { Button } from '@/shared/ui/button'
-import { Badge } from '@/shared/ui/badge'
+} from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { ProjectDetails } from './ProjectDetails'
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { Input } from '@shared/ui/input'
-import { Button } from '@shared/ui/button'
-import { CardContent } from '@shared/ui/card'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { CardContent } from '@/components/ui/card'
 import 'highlight.js/styles/github-dark.css'
 import {
   Form,
@@ -11,7 +11,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/shared/ui/form'
+} from '@/components/ui/form'
 import { Loader2, Check } from 'lucide-react'
 import Image from 'next/image'
 import { PostDTO } from '@features/blog/types'
@@ -33,11 +33,11 @@ type EditForm = {
 type FormProps = CreateForm | EditForm
 
 import TagManager from '@features/tags/components/TagManager'
-import { InputControl } from '@shared/InputControl'
+import { InputControl } from '@/components/InputControl'
 import { MarkEditor } from './MarkEditor'
-import { LoadingFallback } from '@shared/LoadingFallback'
+import { LoadingFallback } from '@/components/LoadingFallback'
 import { TagDTO } from '@features/tags/types'
-import { TextAreaControl } from '@/shared/TextAreaControl'
+import { TextAreaControl } from '@/components/TextAreaControl'
 import { usePostController } from '../hooks/usePostController'
 
 export function PostForm({ onSubmit, tags, mode, defaultValues }: FormProps) {

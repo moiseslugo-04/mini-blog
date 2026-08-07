@@ -1,6 +1,6 @@
 'use client'
 
-import { useFilter } from '@shared/hooks/useFilter'
+import { useFilter } from '@/components/hooks/useFilter'
 import { Search } from 'lucide-react'
 
 export function SearchBar({ search }: { search?: string }) {

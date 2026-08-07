@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import { LogOut, Menu } from 'lucide-react'
-import { Button } from '@shared/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@shared/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import { adminNavigation } from '../config/routes'
 import { usePathname } from 'next/navigation'

@@ -1,8 +1,8 @@
-import { Input } from '@shared/ui/input'
-import { Label } from '@shared/ui/label'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Camera } from 'lucide-react'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@shared/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { getUserProfile } from '../user.service'
 export async function Profile() {
   const profile = await getUserProfile()

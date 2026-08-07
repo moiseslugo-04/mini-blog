@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { PostDTO } from '../types'
 import { usePostForm } from './usePostForm'
-import { useImageUpload } from '@shared/hooks/useImageUpload'
+import { useImageUpload } from '@/components/hooks/useImageUpload'
 import { formatTagName } from '../utils/tag.helper'
 
 type PostControllerProps = {

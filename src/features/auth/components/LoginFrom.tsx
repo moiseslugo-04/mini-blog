@@ -8,11 +8,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@shared/ui/form'
-import { Card, CardContent, CardHeader, CardTitle } from '@shared/ui/card'
-import { Input } from '@shared/ui/input'
-import { Button } from '@shared/ui/button'
-import { Spinner } from '@shared/ui/spinner'
+} from '@/components/ui/form'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Spinner } from '@/components/ui/spinner'
 import { useLogin } from '@features/auth/hooks/useLogin'
 
 export function LoginForm() {

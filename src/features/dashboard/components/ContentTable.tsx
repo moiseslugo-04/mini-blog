@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '@shared/ui/button'
+import { Button } from '@/components/ui/button'
 import { MoreHorizontal, Pencil, Trash2, Eye } from 'lucide-react'
 import {
   DropdownMenu,
@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@shared/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 import { PostDTO } from '@/features/blog/types'
 import { formattedDate } from '@/lib/utils/formattedDate'

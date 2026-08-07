@@ -1,6 +1,6 @@
 'use client'
 
-import { Card } from '@/shared/ui/card'
+import { Card } from '@/components/ui/card'
 import { Info } from 'lucide-react'
 import { TagList } from './TagList'
 import { TagForm } from './TagForm'

@@ -1,5 +1,5 @@
-import { Button } from '@/shared/ui/button'
-import { Input } from '@/shared/ui/input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
 
@@ -8,8 +8,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTrigger,
-} from '@shared/ui/dialog'
-import { Card, CardContent, CardHeader } from '@/shared/ui/card'
+} from '@/components/ui/dialog'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { DialogClose, DialogContent } from '@radix-ui/react-dialog'
 export function TagForm({
   handleAddNewTag,

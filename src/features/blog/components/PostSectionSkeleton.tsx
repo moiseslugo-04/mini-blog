@@ -1,4 +1,4 @@
-import { Skeleton } from '@shared/ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton'
 export function PostSectionSkeleton() {
   return (
     <section className='w-full flex flex-col px-2'>

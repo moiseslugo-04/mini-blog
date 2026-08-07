@@ -1,9 +1,9 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/shared/ui/tabs'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { PostContent } from './PostContent'
-import { Card } from '@shared/ui/card'
+import { Card } from '@/components/ui/card'
 import matter from 'gray-matter'
 import { useWatch } from 'react-hook-form'
-import { TextAreaControl } from '../../../shared/TextAreaControl'
+import { TextAreaControl } from '../../../components/TextAreaControl'
 export function MarkEditor() {
   const content = useWatch({ name: 'content' })
   const { content: markdown } = matter(content || '')

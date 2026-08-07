@@ -1,17 +1,17 @@
-import { ShieldUser, Home, LibraryBig, Hammer } from 'lucide-react'
+import { Home, User, FolderGit2, LogIn, Menu, X, Book } from 'lucide-react'
 
 export const skills = [
-  { name: 'Next.js', icon: 'nextjs', category: 'Fullstack' },
+  { name: 'Next.js', icon: 'nextjs', category: 'Framework' },
   { name: 'TypeScript', icon: 'ts', category: 'Language' },
-  { name: 'Tailwind CSS', icon: 'tailwindcss', category: 'Styling' },
-  { name: 'Node.js', icon: 'nodejs', category: 'Backend' },
-  { name: 'Git', icon: 'git', category: 'Tools' },
-  { name: 'Docker', icon: 'docker', category: 'DevOps' },
   { name: 'JavaScript', icon: 'js', category: 'Language' },
   { name: 'HTML5', icon: 'html5', category: 'Markup' },
   { name: 'CSS3', icon: 'css', category: 'Styling' },
-  { name: 'Zod', icon: 'zod', category: 'Validation' },
+  { name: 'Tailwind CSS', icon: 'tailwindcss', category: 'CSS Framework' },
+  { name: 'Node.js', icon: 'nodejs', category: 'Runtime' },
   { name: 'Prisma', icon: 'prisma', category: 'ORM' },
+  { name: 'Zod', icon: 'zod', category: 'Validation' },
+  { name: 'Git', icon: 'git', category: 'Version Control' },
+  { name: 'Docker', icon: 'docker', category: 'Containerization' },
 ]
 
 export const stats = [{ number: '3+', label: 'Years Learning' }]
@@ -20,25 +20,27 @@ export const links = [
   {
     href: '/',
     label: 'Home',
-    Icon: Home,
-    view: '/home-picture.png',
+    icon: Home,
   },
+  /*{
+    href: '/about',
+    label: 'About',
+    icon: User,
+  },
+  */
   {
     href: '/blog',
     label: 'Blog',
-    Icon: LibraryBig,
-    view: '/blog-picture.png',
+    icon: Book,
   },
   {
     href: '/projects',
     label: 'Projects',
-    Icon: Hammer,
-    view: '/development.png',
+    icon: FolderGit2,
   },
   {
-    href: '/admin',
-    label: 'Dashboard',
-    Icon: ShieldUser,
-    view: '/development.png',
+    href: '/login',
+    label: 'Login',
+    icon: LogIn,
   },
 ]
