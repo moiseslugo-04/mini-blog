@@ -4,6 +4,7 @@ export const skills = [
   { name: 'Next.js', icon: 'nextjs', category: 'Framework' },
   { name: 'TypeScript', icon: 'ts', category: 'Language' },
   { name: 'JavaScript', icon: 'js', category: 'Language' },
+  { name: 'React', icon: 'react', category: 'Language' },
   { name: 'HTML5', icon: 'html5', category: 'Markup' },
   { name: 'CSS3', icon: 'css', category: 'Styling' },
   { name: 'Tailwind CSS', icon: 'tailwindcss', category: 'CSS Framework' },
@@ -22,21 +23,24 @@ export const links = [
     label: 'Home',
     icon: Home,
   },
-  /*{
-    href: '/about',
-    label: 'About',
-    icon: User,
-  },
-  */
+
+  /*
   {
     href: '/blog',
     label: 'Blog',
     icon: Book,
   },
+  */
+
   {
     href: '/projects',
     label: 'Projects',
     icon: FolderGit2,
+  },
+  {
+    href: '/about',
+    label: 'About',
+    icon: User,
   },
   {
     href: '/login',

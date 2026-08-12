@@ -67,7 +67,7 @@ export default function RootLayout({
       <Head>
         <link rel='icon' href='/favicon.png' type='image/x-icon' />
       </Head>
-      <body className='antialiased max-h-full  flex flex-col bg-background text-foreground'>
+      <body className='antialiased max-h-full flex flex-col bg-background text-foreground'>
         <Analytics />
 
         <ThemeProvider

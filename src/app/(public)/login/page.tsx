@@ -1,7 +1,8 @@
 import { LoginForm } from '@/features/auth/components/LoginFrom'
-export default async function LoginPage() {
+
+export default function LoginPage() {
   return (
-    <section className='max-w-sm  m-auto space-y-6 text-center'>
+    <section className='flex min-h-140 items-center justify-center px-4 pt-12'>
       <LoginForm />
     </section>
   )

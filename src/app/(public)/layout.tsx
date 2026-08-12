@@ -8,12 +8,10 @@ export default function PublicLayout({
 }) {
   return (
     <div className='flex min-h-screen flex-col overflow-hidden '>
-      <div className='relative'>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Navbar />
-        </Suspense>
-      </div>
-      <div className='flex-1 flex flex-col items-center justify-center pt-15'>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Navbar />
+      </Suspense>
+      <div className='flex-1 flex flex-col items-center justify-center '>
         {children}
       </div>
       <Footer />

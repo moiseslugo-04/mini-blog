@@ -1,11 +1,16 @@
+'use client'
+
 import { Copyright } from './Copyright'
 import { NavLogo } from '@components/navbar/NavLogo'
-import { links } from '@lib/utils/constants'
 import Link from 'next/link'
 import { Github, MailIcon, Linkedin } from 'lucide-react'
 import { WorldMap } from './WorlMap'
+import { usePathname } from 'next/navigation'
 
 export function Footer() {
+  const pathname = usePathname()
+  const isProjectDetails = /^\/projects\/[^/]+$/.test(pathname)
+  if (isProjectDetails) return null
   return (
     <footer className='w-full py-10 bg-card border-t border-border mt-auto transition-colors duration-300'>
       <div className='container max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_2fr] gap-8 mb-8'>
