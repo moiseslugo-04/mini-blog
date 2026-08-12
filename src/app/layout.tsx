@@ -8,44 +8,60 @@ import { SessionProvider } from 'next-auth/react'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from 'sonner'
 export const metadata: Metadata = {
-  title: 'Moises Lugo - Frontend Developer Portfolio',
+  title: 'Moises Lugo | Junior Full Stack Developer',
   description:
-    'Personal portfolio of Moises Lugo, a frontend developer showcasing projects and writing about what he learns in web development, including Next.js, React, and TailwindCSS.',
+    'Portfolio of Moises Lugo, a Junior Full Stack Developer focused on building modern web applications with React, Next.js, TypeScript, PostgreSQL, and Prisma.',
+
   keywords: [
     'Moises Lugo',
-    'Frontend Developer',
-    'Portfolio',
+    'Junior Full Stack Developer',
+    'Full Stack Developer',
+    'Web Developer',
     'Next.js',
     'React',
-    'TailwindCSS',
-    'Web Development',
+    'TypeScript',
+    'PostgreSQL',
+    'Prisma',
+    'Tailwind CSS',
     'JavaScript',
-    'Frontend Portfolio',
+    'Web Development',
+    'Full Stack Portfolio',
   ],
-  authors: [{ name: 'Moises Lugo', url: 'https://moisesdev.com' }],
+
+  authors: [
+    {
+      name: 'Moises Lugo',
+      url: 'https://moisesdev.com',
+    },
+  ],
+
   creator: 'Moises Lugo',
+
   openGraph: {
-    title: 'Moises Lugo - Frontend Developer Portfolio',
+    title: 'Moises Lugo | Junior Full Stack Developer',
     description:
-      'Personal portfolio of Moises Lugo, featuring frontend projects and a blog where he shares what he is learning about modern web development.',
+      'Portfolio of Moises Lugo, a Junior Full Stack Developer building modern web applications with React, Next.js, TypeScript, PostgreSQL, and Prisma.',
     url: 'https://moisesdev.com',
     siteName: 'Moises Lugo Portfolio',
+
     images: [
       {
         url: 'https://res.cloudinary.com/dnrlarkyn/image/upload/v1760510816/uploads/j5osl8zjrotgclosmiyx.png',
         width: 1200,
         height: 630,
-        alt: 'Moises Lugo Portfolio Banner',
+        alt: 'Moises Lugo - Junior Full Stack Developer Portfolio',
       },
     ],
+
     locale: 'en_US',
     type: 'website',
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: 'Moises Lugo - Frontend Developer Portfolio',
+    title: 'Moises Lugo | Junior Full Stack Developer',
     description:
-      'Frontend developer portfolio with projects and blog posts about learning Next.js, React, and modern web development.',
+      'Junior Full Stack Developer portfolio featuring web applications and projects built with React, Next.js, TypeScript, PostgreSQL, and Prisma.',
     images: [
       'https://res.cloudinary.com/dnrlarkyn/image/upload/v1760510816/uploads/j5osl8zjrotgclosmiyx.png',
     ],
