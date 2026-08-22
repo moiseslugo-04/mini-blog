@@ -17,8 +17,6 @@ def get_user_me(session=Depends(get_session)):
     user_id = session['sub']
     return users_services.get_by_id(user_id)
 
-
-
 @router.get('/by-identifier')
 def get_user_by_identifier_route(identifier):
     return users_services.get_by_identifier(identifier)
@@ -27,13 +25,10 @@ def get_user_by_identifier_route(identifier):
 def get_user_by_id_route(user_id):
     return users_services.get_by_id(user_id)
 
-
 ## POST
 @router.post('')
-async def create_user(data_user:UserCreateSchema):
+def create_user(data_user:UserCreateSchema):
     return {"message":f"User {data_user} create with success"}
-
-
 
 # PUT
 @router.put("/{user_id}")

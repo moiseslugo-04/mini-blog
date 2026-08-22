@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes.users import router as users_router
 from app.routes.auth import router as auth_router
-
+from app.routes.social_links import router as social_links_router
 app = FastAPI()
 
 app.add_middleware(
@@ -16,3 +16,4 @@ app.add_middleware(
 
 app.include_router(users_router)
 app.include_router(auth_router)
+app.include_router(social_links_router)
