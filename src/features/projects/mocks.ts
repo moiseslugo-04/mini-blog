@@ -164,8 +164,8 @@ The goal is not only to present my work, but also to make the portfolio itself a
       },
     ],
 
-    liveDemoUrl: 'https://your-portfolio-url.com/',
+    liveDemoUrl: 'https://www.moiseslugo.com/',
 
-    repoUrl: 'https://github.com/moiseslugo-04/your-portfolio-repository',
+    repoUrl: 'https://github.com/moiseslugo-04/portfolio',
   },
 ]
