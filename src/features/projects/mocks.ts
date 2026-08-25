@@ -98,4 +98,74 @@ This project allowed me to practice building a complete production-oriented land
 
     repoUrl: 'https://github.com/moiseslugo-04/Alianza_Elite',
   },
+
+  {
+    projectName: 'Personal Portfolio',
+
+    description:
+      'Full-stack developer portfolio built with Next.js, React, and TypeScript, featuring a Python backend with FastAPI and Pydantic.',
+
+    details: `This portfolio was built as a personal platform to showcase my skills, projects, and experience as a full-stack developer.
+
+The frontend is built with Next.js, React, and TypeScript, focusing on a clean, responsive, and modern user experience. Tailwind CSS is used for styling and maintaining a consistent design system across the application.
+
+The project also includes a dedicated backend built with Python and FastAPI. I am using Pydantic for request validation and schema definition, allowing the API to handle structured and validated data.
+
+This project is also part of my learning process as I continue developing my backend skills, working with API architecture, HTTP methods, request and response handling, validation, and database integration.
+
+The goal is not only to present my work, but also to make the portfolio itself a demonstration of how I build and structure full-stack applications.`,
+
+    imageUrl: '/portfolio-picture.png',
+
+    slug: 'personal-portfolio',
+
+    technologies: [
+      {
+        name: 'Next.js',
+        icon: '/icons/nextjs.svg',
+        description:
+          'React framework used to build the frontend, routing, and application architecture.',
+      },
+      {
+        name: 'React',
+        icon: '/icons/react.svg',
+        description:
+          'Library used to build reusable and component-based user interfaces.',
+      },
+      {
+        name: 'TypeScript',
+        icon: '/icons/ts.svg',
+        description:
+          'Typed programming language used to improve code quality, maintainability, and developer experience.',
+      },
+      {
+        name: 'Python',
+        icon: '/icons/python.svg',
+        description:
+          'Programming language used to build the backend and API logic.',
+      },
+      {
+        name: 'FastAPI',
+        icon: '/icons/fastapi.svg',
+        description:
+          'Python framework used to build the backend REST API and handle HTTP requests and responses.',
+      },
+      {
+        name: 'Pydantic',
+        icon: '/icons/pydantic.svg',
+        description:
+          'Validation library used to define API schemas and validate incoming data.',
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: '/icons/tailwindcss.svg',
+        description:
+          'Utility-first CSS framework used to build the responsive and consistent visual interface.',
+      },
+    ],
+
+    liveDemoUrl: 'https://your-portfolio-url.com/',
+
+    repoUrl: 'https://github.com/moiseslugo-04/your-portfolio-repository',
+  },
 ]
