@@ -4,18 +4,13 @@ import { Input } from '@/components/ui/input'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { MobileNav } from './MobileNav'
 import { verifySession } from '@/features/dal/session'
-import { getUserById } from '@/features/users/server/user.repository'
+import { redirect } from 'next/navigation'
 
-interface TopBarProps {
-  currentPath?: string
-}
-
-export async function TopBar({ currentPath }: TopBarProps) {
+export async function TopBar() {
   const session = await verifySession()
-  const user = await getUserById(session.userId)
-  if (user === null) {
-    throw new Error('User not found')
-  }
+  const { user, isAuth } = session
+  if (!isAuth) redirect('/login')
+
   return (
     <header className='flex h-16 items-center justify-between border-b border-border bg-card px-4 lg:px-6'>
       <div className='flex items-center gap-4'>

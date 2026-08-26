@@ -10,7 +10,8 @@ import { usePathname } from 'next/navigation'
 export function Footer() {
   const pathname = usePathname()
   const isProjectDetails = /^\/projects\/[^/]+$/.test(pathname)
-  if (isProjectDetails) return null
+  const isAdminPage = pathname === '/admin' || pathname.startsWith('/admin/')
+  if (isProjectDetails || isAdminPage) return null
   return (
     <footer className='w-full py-10 bg-card border-t border-border mt-auto transition-colors duration-300'>
       <div className='container max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_2fr] gap-8 mb-8'>
@@ -62,7 +63,6 @@ export function Footer() {
         <WorldMap />
       </div>
 
-      {/* Copyright inferior */}
       <div className='container max-w-6xl mx-auto px-4 pt-6 border-t border-border/60 flex justify-center items-center text-xs text-muted-foreground'>
         <Copyright />
       </div>

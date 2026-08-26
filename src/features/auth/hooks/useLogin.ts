@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { useForm } from '@features/auth/hooks/useForm'
 import { loginSchema, LoginSchema } from '@features/auth/schema/auth'
 import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { API_URL } from '@/app/config/env'
 export function useLogin() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
   const router = useRouter()
 
   const form = useForm<LoginSchema>({
@@ -22,12 +21,15 @@ export function useLogin() {
     setLoading(true)
     setError(null)
     try {
-      const response = await signIn('credentials', {
-        redirect: false,
-        identifier: data.identifier,
-        password: data.password,
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       })
-      if (response?.error) throw new Error(response.error)
+      if (response.status === 401) throw new Error('Unauthorized')
       if (response?.ok) return router.push('/admin')
       throw new Error('Login failed')
     } catch (error) {

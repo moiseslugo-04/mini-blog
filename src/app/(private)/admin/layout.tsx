@@ -1,7 +1,6 @@
 import { Sidebar } from '@/features/dashboard/components/Sidebar'
 import { TopBar } from '@/features/dashboard/components/TopBar'
 import { Footer } from '@/components/Footer'
-import { Suspense } from 'react'
 
 export default function AdminLayout({
   children,

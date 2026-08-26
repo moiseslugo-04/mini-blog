@@ -1,10 +1,19 @@
 import 'server-only'
-import { auth } from '../auth/auth'
-import { cache } from 'react'
-import { redirect } from 'next/navigation'
+import { cookies } from 'next/headers'
+import { API_URL } from '@/app/config/env'
+type User = { id: string; name: string; email: string; username: string }
+type AuthResponse = { isAuth: false; user: null } | { isAuth: true; user: User }
+export const verifySession = async (): Promise<AuthResponse> => {
+  const cookiesStore = await cookies()
+  const accessToken = cookiesStore.get('access_token')?.value
+  if (!accessToken) return { isAuth: false, user: null }
 
-export const verifySession = async () => {
-  const session = await auth()
-  if (!session?.user.id) redirect('/login')
-  return { isAuth: true, userId: session.user.id, role: session.user.role }
+  const response = await fetch(API_URL + '/users/me', {
+    headers: {
+      Cookie: `access_token=${accessToken}`,
+    },
+  })
+  if (!response.ok) return { isAuth: false, user: null }
+  const user = (await response.json()) as User
+  return { isAuth: true, user }
 }

@@ -6,7 +6,10 @@ import { nanoid } from 'nanoid'
 import { formatTagName, normalizeTag } from './utils/tag.helper'
 import { PostDTO } from './types'
 export async function createPost(input: PostInput) {
-  const session = await verifySession()
+  const { isAuth, user } = await verifySession()
+
+  if (!isAuth)
+    return { success: false, error: { message: 'Unauthorized' }, data: null }
   // validate data
   const parseData = postSchema.safeParse(input)
   if (!parseData.success) {
@@ -20,7 +23,7 @@ export async function createPost(input: PostInput) {
     const newPost = await create({
       ...post,
       slug,
-      authorId: session.userId,
+      authorId: user.id,
       tags: parseTag,
     })
 
