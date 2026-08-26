@@ -12,10 +12,10 @@ def get_by_identifier(identifier):
 
 # Get user by email
 def get_by_email(user_email):
-    return execute_query('SELECT * FROM users WHERE email=%s',(user_email,),fetchone=True)
+    return execute_query('SELECT id,name,username,email FROM users WHERE email=%s',(user_email,),fetchone=True)
 # Get user by username 
 def get_by_username(username):
-    return execute_query("SELECT * FROM users WHERE username=%s",(username,),fetchone=True)
+    return execute_query("SELECT id,name,username,email FROM users WHERE username=%s",(username,),fetchone=True)
             
 ## get user by id
 def get_by_id(user_id:str):
