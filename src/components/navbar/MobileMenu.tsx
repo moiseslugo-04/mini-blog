@@ -9,6 +9,7 @@ import { NavLogo } from './NavLogo'
 import { links } from '@lib/utils/constants'
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
+
   return (
     <>
       <div className='flex sm:hidden items-center gap-3'>
