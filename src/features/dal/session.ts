@@ -7,13 +7,13 @@ export const verifySession = async (): Promise<AuthResponse> => {
   const cookieStore = await cookies()
   const accessToken = cookieStore.get('access_token')
 
-  console.log(accessToken, 'accessToken')
   const response = await fetch(API_URL + '/users/me', {
     credentials: 'include',
     headers: {
       Cookie: `access_token=${accessToken?.value ?? ''}`,
     },
   })
+
   if (!response.ok) return { isAuth: false, user: null }
   const user = (await response.json()) as User
   return { isAuth: true, user }
