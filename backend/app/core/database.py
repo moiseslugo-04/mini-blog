@@ -1,7 +1,14 @@
 import psycopg
 from psycopg.rows import dict_row
 from app.config import DATABASE_URL
-def get_connection(): return psycopg.connect(DATABASE_URL)
+from app.core.exceptions import DatabaseError
+
+def get_connection(): 
+    try :
+        return psycopg.connect(DATABASE_URL)
+    except Exception as e:
+        print("Error connecting to the database:", e)
+        raise DatabaseError("Database connection error") 
 
 
 def execute_query(query:str,params=None,fetchone=False,fetchAll=False):

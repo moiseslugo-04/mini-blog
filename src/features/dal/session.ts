@@ -14,8 +14,6 @@ export const verifySession = async (): Promise<AuthResponse> => {
       Cookie: `access_token=${accessToken?.value ?? ''}`,
     },
   })
-
-  console.log(response, 'session')
   if (!response.ok) return { isAuth: false, user: null }
   const user = (await response.json()) as User
   return { isAuth: true, user }
