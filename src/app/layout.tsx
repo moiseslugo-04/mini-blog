@@ -4,7 +4,6 @@ import Head from 'next/head'
 import '@/globals.css'
 import { ThemeProvider } from '@features/theme/components/theme-provider'
 import { Footer } from '@/components/Footer'
-import { SessionProvider } from 'next-auth/react'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from 'sonner'
 export const metadata: Metadata = {
@@ -92,10 +91,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SessionProvider>
             {/* Main content */}
             <main className='flex-1'>{children}</main>
-          </SessionProvider>
           {/* Footer always at bottom */}
         </ThemeProvider>
         <Toaster />
