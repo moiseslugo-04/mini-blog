@@ -1,2 +1,2 @@
-INSERT INTO users(id,name,username,email,password_hash)
-VALUES(gen_random_uuid(),'Moises','moises','moiseslugo9134@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$bs8duKBMC2yNFuArMAHQ/A$Cs2BlGZQVvyI2YpR5PmJV0q3lsMuXBxaYh4pbgLlHqE')
+INSERT INTO users(name,username,email,password_hash)
+VALUES('Moises','moises','moiseslugo9134@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$bs8duKBMC2yNFuArMAHQ/A$Cs2BlGZQVvyI2YpR5PmJV0q3lsMuXBxaYh4pbgLlHqE')

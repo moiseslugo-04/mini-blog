@@ -1,26 +1,32 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from app.services import social_links as social_links_services 
-from app.schemas.social_links import SocialLinkSchema
-router = APIRouter(prefix='/users',tags=['Social_Links'])
-@router.get('/social_links')
-def get_socila_links():
-    return social_links_services.get()
+from app.schemas.social_links import SocialLinkPartialSchema, SocialLinkSchema
+from app.auth.session import get_session
+router = APIRouter(prefix='/social_links',tags=['Social_Links'])
+@router.get('/')
+def get_social_links():
+    return social_links_services.get_all()
 
-@router.get('/{user_id}/social_links')
-def get_socila_links(user_id):
+@router.get('/{user_id}')
+def get_social_links_by_user_id(user_id):
     return social_links_services.get_by_user_id(user_id)
 
 # POST
-@router.post('/{user_id}/social_linkns')
-def create_social_links(user_id,data:SocialLinkSchema):
+@router.post('/{user_id}')
+def create_social_link(user_id,data:SocialLinkSchema):
     return social_links_services.create(user_id,data)
 
-#PATHC
-@router.patch('/{user_id}/social_link')
-def update_social_links():
-    return {"message":"social links updated successfull"}
+#PATH
+@router.patch('/{link_id}')
+def update_social_link(
+    link_id,
+    data:SocialLinkPartialSchema,
+    session=Depends(get_session)):
+    print(session,data)
+    user_id =session['sub']
+    return social_links_services.update(link_id,user_id,data)
 
 #DELETE 
-@router.delete('/social_links/{link_id}')
+@router.delete('/{link_id}')
 def delete_social_link():
-    return {'message':'social link was delted sucessfull'}
+    return {'message':'social link was deleted successful'}

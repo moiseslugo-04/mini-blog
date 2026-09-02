@@ -5,6 +5,5 @@ class SocialLinkSchema(BaseModel):
     name:str
     
 class SocialLinkPartialSchema(BaseModel):
-    id:str
-    url: str | None
-    name: str | None
+    url: str | None =None
+    name: str | None = None
