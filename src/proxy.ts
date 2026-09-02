@@ -16,7 +16,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL('/admin', request.url))
   }
 
-  if (isProtectedRoute && !isAuth && !session) {
+  if (isProtectedRoute && !isAuth && !session.isAuth) {
     const loginUrl = new URL('/login', request.url)
     loginUrl.searchParams.set('callbackUrl', pathname)
     return NextResponse.redirect(loginUrl)
