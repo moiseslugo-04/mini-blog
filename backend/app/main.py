@@ -5,10 +5,14 @@ from app.routes.users import router as users_router
 from app.routes.auth import router as auth_router
 
 app = FastAPI()
-
+origins = [
+    "https://www.moiseslugo.com",
+    "https://moiseslugo.com",
+    "http://localhost:3000"
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://www.moiseslugo.com","http://localhost:3000"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
