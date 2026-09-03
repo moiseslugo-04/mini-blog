@@ -10,7 +10,6 @@ router = APIRouter(prefix='/auth',tags=["Auth"])
 def login(data:AuthLoginSchema,res:Response):
     user_id = user_login(data)
     create_session(res,user_id)
-    
     return {'message':'Login Successful'}
 
 @router.post('/logout')

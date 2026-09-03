@@ -8,8 +8,10 @@ def create_session(res:Response,user_id):
     access_token = encrypt(user_id,expiresAt)
     res.set_cookie(
         key='access_token',value=access_token,
-        httponly=True,secure=True,samesite='lax'
-        )    
+        httponly=True,secure=False,samesite='lax',
+        expires=expiresAt
+        )   
+    return {'message':'Session Created','expiresAt':expiresAt} 
     
 def get_session(req:Request):
     token = req.cookies.get('access_token')
