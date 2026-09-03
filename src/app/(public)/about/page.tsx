@@ -3,88 +3,121 @@ export default function AboutPage() {
     <section className='mx-auto w-full max-w-4xl px-4 py-12 sm:px-6 sm:py-16'>
       <div className='space-y-10'>
         {/* Header */}
+
         <div className='max-w-2xl space-y-4'>
           <p className='text-sm font-medium uppercase tracking-wider text-primary'>
-            About me
+            Sobre mim
           </p>
 
           <h1 className='text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl'>
-            Building web applications from idea to implementation.
+            Transformando ideias em aplicações web completas.
           </h1>
 
           <p className='text-base leading-7 text-muted-foreground sm:text-lg'>
-            I&apos;m Moises Lugo, a junior full stack developer focused on
-            building modern, responsive, and maintainable web applications with
-            React, Next.js, and TypeScript.
+            Sou Moises Lugo, estudante e Desenvolvedor Full Stack Júnior,
+            atualmente mais focado no desenvolvimento de back-end com Python e
+            na construção de aplicações web modernas utilizando tecnologias
+            como React, Next.js, TypeScript, FastAPI e PostgreSQL.
           </p>
         </div>
 
         {/* About */}
+
         <div className='max-w-3xl space-y-6 text-sm leading-7 text-muted-foreground sm:text-base'>
           <p>
-            My journey into web development started with frontend development,
-            where I became interested in creating interfaces that are not only
-            visually clean, but also intuitive, responsive, and well structured.
-            Over time, I started exploring the backend side of applications and
-            became interested in understanding how the different parts of a
-            product work together.
+            Minha jornada no desenvolvimento web começou pelo front-end, onde
+            desenvolvi interesse por criar interfaces que fossem não apenas
+            visualmente organizadas, mas também responsivas, intuitivas e bem
+            estruturadas. Com o tempo, comecei a explorar o back-end para
+            entender melhor como as diferentes partes de uma aplicação se
+            conectam e como uma aplicação funciona além da interface.
           </p>
 
           <p>
-            Today, I work with technologies such as{' '}
+            Atualmente, estou direcionando minha evolução para o desenvolvimento
+            Full Stack, com maior foco no back-end utilizando{' '}
             <strong className='font-medium text-foreground'>
-              JavaScript, TypeScript, React, Next.js, Tailwind CSS, PostgreSQL,
-              and Prisma
+              Python, FastAPI e PostgreSQL
             </strong>
-            . I enjoy working across the stack, from building reusable
-            components and responsive interfaces to designing data models,
-            integrating APIs, implementing authentication, and connecting
-            applications to databases.
+            , sem deixar de trabalhar com{' '}
+            <strong className='font-medium text-foreground'>
+              JavaScript, TypeScript, React e Next.js
+            </strong>{' '}
+            no front-end.
           </p>
 
           <p>
-            Most of my experience comes from building personal projects that
-            simulate real-world applications. For example, I have developed a
-            full stack e-commerce application with authentication, CRUD
-            operations, product management, database integration, and an
-            administrative dashboard. These projects have helped me develop not
-            only technical skills, but also a better understanding of
-            architecture, problem solving, and the decisions involved in
-            building maintainable applications.
+            Na prática, venho desenvolvendo aplicações completas que envolvem
+            criação de APIs, integração com bancos de dados, autenticação,
+            operações CRUD, modelagem de dados, validação, tratamento de erros
+            e integração entre front-end e back-end. Também trabalho com
+            componentes reutilizáveis, interfaces responsivas e organização de
+            código buscando manter os projetos fáceis de entender e evoluir.
           </p>
 
           <p>
-            I believe the best way to improve as a developer is by building,
-            breaking, investigating, and rebuilding. I&apos;m constantly
-            learning new concepts, improving existing projects, and looking for
-            better ways to solve problems rather than simply making something
-            work.
+            Grande parte da minha experiência foi construída através de
+            projetos próprios que simulam cenários de aplicações reais. Entre
+            eles, desenvolvi uma aplicação de e-commerce Full Stack com
+            autenticação, gerenciamento de produtos, operações CRUD,
+            integração com banco de dados e painel administrativo. Esses
+            projetos me ajudaram a desenvolver não apenas minhas habilidades
+            técnicas, mas também minha capacidade de entender problemas,
+            estruturar soluções e tomar decisões durante o desenvolvimento.
+          </p>
+
+          <p>
+            Ainda estou em processo de aprendizado e evolução, mas já possuo uma
+            base prática que me permite trabalhar na construção de aplicações
+            reais e entender o fluxo de desenvolvimento de um produto de ponta
+            a ponta. Meu objetivo agora é transformar essa experiência em
+            experiência profissional, aprendendo com outros desenvolvedores,
+            recebendo feedback e contribuindo para projetos reais.
+          </p>
+
+          <p>
+            Acredito que a melhor forma de evoluir como desenvolvedor é
+            construindo, testando, investigando problemas e buscando entender
+            por que as coisas funcionam. Por isso, continuo estudando e
+            aprimorando meus projetos enquanto busco constantemente maneiras
+            melhores de resolver problemas.
           </p>
         </div>
 
         {/* Current goal */}
+
         <div className='max-w-3xl rounded-xl border bg-muted/30 p-6 sm:p-8'>
           <p className='text-sm font-medium uppercase tracking-wider text-primary'>
-            What I&apos;m looking for
+            O que estou buscando
           </p>
 
           <h2 className='mt-3 text-xl font-semibold tracking-tight sm:text-2xl'>
-            My next step is to grow through real-world experience.
+            Minha próxima etapa é crescer através de experiência profissional.
           </h2>
 
           <p className='mt-3 text-sm leading-7 text-muted-foreground sm:text-base'>
-            I&apos;m currently looking for an internship or junior position in
-            web development where I can work alongside experienced developers,
-            contribute to real products, and continue developing my skills
-            across the stack. I&apos;m especially interested in environments
-            where I can take responsibility, solve real problems, receive
-            feedback, and keep growing as a developer.
+            Estou buscando minha primeira oportunidade profissional como
+            estagiário ou Desenvolvedor Júnior na área de desenvolvimento web,
+            onde possa aplicar meus conhecimentos em projetos reais, trabalhar
+            ao lado de desenvolvedores mais experientes e continuar evoluindo
+            como profissional.
+          </p>
+
+          <p className='mt-3 text-sm leading-7 text-muted-foreground sm:text-base'>
+            Tenho interesse principalmente em oportunidades de desenvolvimento
+            Full Stack, com foco em back-end utilizando Python e FastAPI, mas
+            também estou preparado para atuar no front-end com React, Next.js e
+            TypeScript. Busco um ambiente onde possa contribuir, assumir
+            responsabilidades de forma gradual, aprender com feedback e
+            desenvolver soluções que gerem valor para a equipe e para o
+            produto.
           </p>
         </div>
 
         {/* Tech stack */}
+
         <div className='border-t pt-8'>
-          <h2 className='text-lg font-semibold'>Current stack</h2>
+          <h2 className='text-lg font-semibold'>Stack atual</h2>
 
           <div className='mt-4 flex flex-wrap gap-2'>
             {[
@@ -92,9 +125,11 @@ export default function AboutPage() {
               'TypeScript',
               'React',
               'Next.js',
-              'Tailwind CSS',
+              'Python',
+              'FastAPI',
               'PostgreSQL',
               'Prisma',
+              'Tailwind CSS',
               'Git & GitHub',
             ].map((technology) => (
               <span
@@ -110,3 +145,4 @@ export default function AboutPage() {
     </section>
   )
 }
+
