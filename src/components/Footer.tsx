@@ -60,7 +60,6 @@ export function Footer() {
             </li>
           </ul>
         </div>
-        <WorldMap />
       </div>
 
       <div className='container max-w-6xl mx-auto px-4 pt-6 border-t border-border/60 flex justify-center items-center text-xs text-muted-foreground'>
