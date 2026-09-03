@@ -1,3 +1,4 @@
+
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { mockProjects } from '@/features/projects/mocks'
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react'
@@ -5,6 +6,7 @@ import Link from 'next/link'
 import { ProjectOverview } from '@/features/projects/ProjectOverview'
 import { TechStack } from '@/features/projects/TechStack'
 import { notFound } from 'next/navigation'
+
 type RouteParams = {
   params: Promise<{ slug: string }>
 }
@@ -47,7 +49,7 @@ export default async function ProjectDetails({ params }: RouteParams) {
       {/* Main content */}
       <main className='mx-auto w-full max-w-5xl px-4 py-8 md:px-8 md:py-12'>
         {/* ================================= */}
-        {/* OVERVIEW */}
+        {/* VISÃO GERAL */}
         {/* ================================= */}
         <ProjectOverview
           imageUrl={imageUrl}
@@ -56,8 +58,9 @@ export default async function ProjectDetails({ params }: RouteParams) {
           description={description}
           projectName={projectName}
         />
+
         {/* ================================= */}
-        {/* ABOUT */}
+        {/* SOBRE */}
         {/* ================================= */}
 
         <section
@@ -66,11 +69,11 @@ export default async function ProjectDetails({ params }: RouteParams) {
         >
           <div className='space-y-2'>
             <p className='text-sm font-medium uppercase tracking-wider text-muted-foreground'>
-              About
+              Sobre
             </p>
 
             <h2 className='text-2xl font-semibold tracking-tight md:text-3xl'>
-              About this project
+              Sobre o projeto
             </h2>
           </div>
 
@@ -85,13 +88,14 @@ export default async function ProjectDetails({ params }: RouteParams) {
             ))}
           </div>
         </section>
+
         {/* ================================= */}
-        {/* TECH STACK */}
+        {/* TECNOLOGIAS */}
         {/* ================================= */}
         <TechStack technologies={technologies} />
 
         {/* ================================= */}
-        {/* PROJECT LINKS */}
+        {/* LINKS DO PROJETO */}
         {/* ================================= */}
 
         <section id='links' className='mt-20 border-t pt-10'>
@@ -101,7 +105,7 @@ export default async function ProjectDetails({ params }: RouteParams) {
             </p>
 
             <h2 className='text-2xl font-semibold tracking-tight'>
-              Explore the project
+              Explore o projeto
             </h2>
           </div>
 
@@ -114,7 +118,7 @@ export default async function ProjectDetails({ params }: RouteParams) {
                 className='inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90'
               >
                 <ExternalLink className='size-4' />
-                Live Demo
+                Ver projeto
               </Link>
             )}
 
@@ -126,7 +130,7 @@ export default async function ProjectDetails({ params }: RouteParams) {
                 className='inline-flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted'
               >
                 <Github className='size-4' />
-                GitHub Repository
+                Repositório no GitHub
               </Link>
             )}
           </div>
@@ -135,3 +139,4 @@ export default async function ProjectDetails({ params }: RouteParams) {
     </>
   )
 }
+
