@@ -34,7 +34,7 @@ export function Skills() {
             href='/projects'
             className='group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:w-auto'
           >
-            Explore Projects
+            Explorar projetos
             <ArrowRight className='h-5 w-5 transition-transform duration-300 group-hover:translate-x-1' />
           </Link>
         </div>
