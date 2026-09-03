@@ -1,4 +1,13 @@
-import { Home, User, FolderGit2, LogIn, Menu, X, Book } from 'lucide-react'
+import {
+  Home,
+  User,
+  FolderGit2,
+  LogIn,
+  Menu,
+  X,
+  Book,
+  LayoutDashboard,
+} from 'lucide-react'
 
 export const skills = [
   { name: 'Next.js', icon: 'nextjs', category: 'Framework' },
@@ -45,5 +54,10 @@ export const links = [
     href: '/login',
     label: 'Login',
     icon: LogIn,
+  },
+  {
+    href: '/admin',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
   },
 ]

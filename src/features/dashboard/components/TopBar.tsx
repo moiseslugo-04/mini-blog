@@ -1,13 +1,13 @@
+'use client'
+
 import { Bell, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { MobileNav } from './MobileNav'
-import { verifySession } from '@/features/dal/session'
-
+import { useSessionStore } from '@features/dal/sessionStore'
 export function TopBar() {
-  const session = { isAuth: true, user: { name: null } }
-  const { user, isAuth } = session
+  const user = useSessionStore((state) => state.user)
   return (
     <header className='flex h-16 items-center justify-between border-b border-border bg-card px-4 lg:px-6'>
       <div className='flex items-center gap-4'>

@@ -1,7 +1,7 @@
 import { Sidebar } from '@/features/dashboard/components/Sidebar'
 import { TopBar } from '@/features/dashboard/components/TopBar'
 import { Footer } from '@/components/Footer'
-import { SessionGuard } from '@/features/auth/components/SessionGuard'
+import { SessionGuard } from '@/features/dal/SessionGuard'
 export default function AdminLayout({
   children,
 }: {

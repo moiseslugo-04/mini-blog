@@ -6,8 +6,8 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/features/theme/components/ModeToggle'
 import { NavLogo } from './NavLogo'
-import { links } from '@lib/utils/constants'
-export function MobileMenu() {
+import { NavbarLink } from './Navbar'
+export function MobileMenu({ links }: { links: NavbarLink[] }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -70,12 +70,14 @@ export function MobileMenu() {
             {/* Links */}
             <nav className='p-3'>
               <ul className='space-y-2'>
-                {links.map(({ href, label, icon: Icon }) => (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      onClick={() => setIsOpen(false)}
-                      className='
+                {links.map(({ href, label, icon: Icon }) => {
+                  if (label === 'Dashboard') return null
+                  return (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        onClick={() => setIsOpen(false)}
+                        className='
                         group
                         flex
                         items-center
@@ -88,9 +90,9 @@ export function MobileMenu() {
                         hover:bg-primary/10
                         hover:text-primary
                       '
-                    >
-                      <div
-                        className='
+                      >
+                        <div
+                          className='
                           flex
                           size-10
                           items-center
@@ -103,14 +105,15 @@ export function MobileMenu() {
                           group-hover:border-primary/40
                           group-hover:bg-primary/10
                         '
-                      >
-                        <Icon className='size-5' />
-                      </div>
+                        >
+                          <Icon className='size-5' />
+                        </div>
 
-                      <span className='font-medium'>{label}</span>
-                    </Link>
-                  </li>
-                ))}
+                        <span className='font-medium'>{label}</span>
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             </nav>
 

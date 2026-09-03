@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { links } from '@lib/utils/constants'
 import { cn } from '@lib/utils'
 import { ModeToggle } from '@/features/theme/components/ModeToggle'
-import { GithubIcon } from 'lucide-react'
-export function DesktopMenu() {
+import { GithubIcon, LucideIcon } from 'lucide-react'
+import { NavbarLink } from './Navbar'
+export function DesktopMenu({ links }: { links: NavbarLink[] }) {
   const pathname = usePathname()
   return (
     <div className=' hidden sm:flex container mx-auto  items-center justify-between py-2 px-6 gap-3'>
       <ul className=' hidden sm:flex items-center gap-8 text-sm'>
-        {links.map(({ href, label }) => (
+        {links.map(({ href, label, icon: Icon }) => (
           <li key={href}>
             <Link
               href={href}
