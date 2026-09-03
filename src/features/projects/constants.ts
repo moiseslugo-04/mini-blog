@@ -1,31 +1,33 @@
+
 import { BookOpen, Code2, Layers3, Lightbulb, Image } from 'lucide-react'
 
 export const menuItems = [
   {
-    label: 'Overview',
+    label: 'Visão geral',
     icon: BookOpen,
     href: 'tech-overview',
   },
   {
-    label: 'Features',
+    label: 'Funcionalidades',
     icon: Layers3,
     href: 'about',
   },
   {
-    label: 'Tech Stack',
+    label: 'Tecnologias',
     icon: Code2,
     href: 'tech-stack',
   },
   /*
   {
-    label: 'Challenges',
+    label: 'Desafios',
     icon: Lightbulb,
     href: 'tech-stack',
   },
   {
-    label: 'Gallery',
+    label: 'Galeria',
     icon: Image,
     href: 'tech-stack',
   },
   */
 ]
+
