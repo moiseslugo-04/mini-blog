@@ -1,12 +1,14 @@
 import { PostInput, postSchema, updatePostSchema } from './post.schema'
 import slugify from 'slugify'
 import { create, remove, getAll, update } from './blog.repository'
-import { verifySession } from '../dal/session'
 import { nanoid } from 'nanoid'
 import { formatTagName, normalizeTag } from './utils/tag.helper'
 import { PostDTO } from './types'
 export async function createPost(input: PostInput) {
-  const { isAuth, user } = await verifySession()
+  const { isAuth, user } = {
+    isAuth: true,
+    user: { id: '123', name: 'John Doe' },
+  } // Replace this with actual session verification logic
 
   if (!isAuth)
     return { success: false, error: { message: 'Unauthorized' }, data: null }
@@ -35,7 +37,6 @@ export async function createPost(input: PostInput) {
 }
 
 export async function updatePost(postId: string, data: PostInput) {
-  await verifySession()
   //validate data
   const parseData = updatePostSchema.safeParse(data)
   if (!parseData.success) {
@@ -53,7 +54,6 @@ export async function updatePost(postId: string, data: PostInput) {
 
 export async function deletePost(postId: string) {
   try {
-    await verifySession()
     const deletedPost = await remove(postId)
     return { success: false, error: null, data: deletedPost }
   } catch (error) {

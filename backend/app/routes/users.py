@@ -15,7 +15,7 @@ def get_users_route():
 @router.get('/me')
 def get_user_me(session=Depends(get_session)):
     user_id = session['sub']
-    return users_services.get_by_id(user_id)
+    return users_services.get_profile(user_id)
 
 @router.get('/by-identifier')
 def get_user_by_identifier_route(identifier):

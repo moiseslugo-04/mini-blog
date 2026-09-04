@@ -1,14 +1,16 @@
+'use client'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Camera } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { getUserProfile } from '../user.service'
+import { useSessionStore } from '@/features/dal/sessionStore'
 export async function Profile() {
-  const profile = await getUserProfile()
-  if (profile.user === null) throw new Error('User not found')
-  const { firstName, lastName, avatarUrl, email, bio } = profile.user
-  const avatarFallback = firstName.charAt(0) + lastName.charAt(0)
+  const user = useSessionStore((state) => state.user)
+  if (user === null) throw new Error('User not found')
+  const { name, username, avatar_url, avatar_alt, email, bio } = user
+
+  const avatarFallback = name.charAt(0)
   return (
     <section className='mt-8'>
       <div className='mt-6 rounded-xl border border-border bg-card p-6'>
@@ -16,7 +18,10 @@ export async function Profile() {
         <div className='flex items-center gap-4'>
           <div className='relative'>
             <Avatar className='h-20 w-20'>
-              <AvatarImage src={avatarUrl} alt='Profile' />
+              <AvatarImage
+                src={avatar_url ?? undefined}
+                alt={avatar_alt ?? 'avatar'}
+              />
               <AvatarFallback className='bg-secondary text-lg font-medium'>
                 {avatarFallback}
               </AvatarFallback>
@@ -39,12 +44,12 @@ export async function Profile() {
         {/* Form Fields */}
         <div className='mt-6 grid gap-4 sm:grid-cols-2'>
           <div className='space-y-2'>
-            <Label htmlFor='firstName'>{firstName}</Label>
-            <Input id='firstName' defaultValue={firstName} />
+            <Label htmlFor='firstName'>{name}</Label>
+            <Input id='firstName' defaultValue={name} />
           </div>
           <div className='space-y-2'>
             <Label htmlFor='lastName'>Last name</Label>
-            <Input id='lastName' defaultValue={lastName} />
+            <Input id='lastName' defaultValue={username} />
           </div>
           <div className='space-y-2 sm:col-span-2'>
             <Label htmlFor='email'>Email</Label>
@@ -57,7 +62,7 @@ export async function Profile() {
               rows={3}
               className='flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
               placeholder='Tell visitors a little about yourself...'
-              defaultValue={bio}
+              defaultValue={bio ?? 'Undefined'}
             />
           </div>
         </div>

@@ -29,6 +29,26 @@ def get_by_id(user_id:str):
         return execute_query('SELECT id,name,username,email FROM users WHERE id=%s',(user_id,),fetchone=True) 
     
     
+        
+def get_profile():
+    return execute_query(
+                 '''SELECT id,name,username,email,bio                   
+                        u.id,
+                        u.name,
+                        u.username,
+                        u.email,
+                        u.bio,
+                        u.created_at,
+                        u.updated_at,
+
+                        a.id AS avatar_id,
+                        a.image_url AS avatar_url,
+                        a.alt AS avatar_alt 
+                        FROM users u
+                LEFT JOIN user_avatars a
+                ON a.user_id = u.id;''',
+                 fetchone=True)
+    
 #Delete user by Id
 def delete_by_id(user_id):
     with get_connection() as connection:

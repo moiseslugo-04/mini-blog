@@ -1,10 +1,10 @@
 import { create } from 'zustand'
-import { User } from './types'
+import { ProfileDTO } from './types'
 
 interface SessionStore {
-  user: User | null
+  user: ProfileDTO | null
   isAuthenticated: boolean
-  setSession: (user: User | null) => void
+  setSession: (user: ProfileDTO | null) => void
   clearSession: () => void
 }
 

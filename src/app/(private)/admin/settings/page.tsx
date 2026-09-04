@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components/PageHeader'
 import { Input } from '@/components/ui/input'
 import { Github, Linkedin, Twitter } from 'lucide-react'
-import { Profile } from '@/features/users/components/Profile'
+import { Profile } from '@/features/dashboard/components/Profile'
 import { Suspense } from 'react'
 export const dynamic = 'force-dynamic'
 
