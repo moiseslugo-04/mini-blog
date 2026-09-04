@@ -36,7 +36,8 @@ export function DesktopMenu({ links }: { links: NavbarLink[] }) {
         <ModeToggle />
 
         <Link
-          href={'/'}
+          href={'https://github.com/moiseslugo-04'}
+          target='_blank'
           className='hidden sm:block border border-white rounded-sm p-1'
         >
           <GithubIcon />
