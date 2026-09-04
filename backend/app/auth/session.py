@@ -15,6 +15,7 @@ def create_session(res:Response,user_id):
     
 def get_session(req:Request):
     token = req.cookies.get('access_token')
+    print(token)
     if not token :
         raise HTTPException(status_code=401,detail='Not Authenticated')
 
