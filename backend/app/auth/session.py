@@ -1,6 +1,7 @@
-from fastapi import HTTPException, Response,Request
+from fastapi import  Response,Request
 from app.config import ACCESS_TOKEN_EXPIRE_MINUTES
 from datetime import datetime , timedelta,timezone
+from app.core.exceptions import UnauthorizedError
 from app.auth.jwt import decrypt, encrypt
 
 def create_session(res:Response,user_id):
@@ -15,14 +16,13 @@ def create_session(res:Response,user_id):
     
 def get_session(req:Request):
     token = req.cookies.get('access_token')
-    print(token)
     if not token :
-        raise HTTPException(status_code=401,detail='Not Authenticated')
+        raise UnauthorizedError('No access token provided')
 
     payload = decrypt(token)
 
     if not payload:
-        raise HTTPException(status_code=401,detail='Invalid token or expired')
+        raise UnauthorizedError('Invalid token or expired')
 
     return payload
 

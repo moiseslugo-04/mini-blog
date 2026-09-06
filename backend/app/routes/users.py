@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException, Request,Cookie
+from fastapi import APIRouter, Depends, File, Form, UploadFile
 from app.services import users as users_services
-from app.schemas.users import  UserCreateSchema
+from app.schemas.users import  UserAvatarSchema, UserCreateSchema,UserUpdateSchema
 from app.auth.session import get_session
 
 router = APIRouter(prefix='/users',tags=['Users'])
@@ -21,6 +21,27 @@ def get_user_me(session=Depends(get_session)):
 def get_user_by_identifier_route(identifier):
     return users_services.get_by_identifier(identifier)
 
+# upload user avatar 
+@router.post('/me/avatar')
+def upload_user_avatar(file:UploadFile =File(...),alt:str = Form(...) ,session=Depends(get_session)):
+    user_id = session['sub']
+    return users_services.upload_user_avatar(user_id, file, alt)
+
+# update user avatar 
+@router.put('/me/avatar')
+def update_user_avatar(file:UploadFile,alt:str ,session=Depends(get_session)):
+    user_id = session['sub']
+    return users_services.update_user_avatar(user_id, file, alt)
+
+
+# Delete user avatar 
+@router.delete('/me/avatar')
+def delete_user_avatar(session=Depends(get_session)):
+    user_id = session['sub']
+    return users_services.delete_user_avatar(user_id)
+
+
+
 @router.get('/{user_id}')
 def get_user_by_id_route(user_id):
     return users_services.get_by_id(user_id)
@@ -30,17 +51,14 @@ def get_user_by_id_route(user_id):
 def create_user(data_user:UserCreateSchema):
     return {"message":f"User {data_user} create with success"}
 
-# PUT
-@router.put("/{user_id}")
-def update_user(user_id:str):
- return {'message':f'user {user_id}'}
 
 #PATCH
-@router.patch("/{user_id}")
-def update_partial_user(user_id):
- return {'message':f'user {user_id}'}
+@router.patch("/")
+def update_partial_user( data:UserUpdateSchema,session=Depends(get_session)):
+    user_id = session['sub']
+    return users_services.update_user(user_id,data.model_dump(exclude_unset=True))
  
 ## DELETE 
 @router.delete('/{user_id}')
-def get_user_by_id_route(user_id):
+def delete_user(user_id:str):
     return users_services.delete_by_id(user_id)
